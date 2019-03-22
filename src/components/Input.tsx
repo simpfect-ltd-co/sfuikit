@@ -9,37 +9,56 @@ interface Props extends BaseProps {
 }
 
 export default class UIInput extends React.Component<Props> {
+  state = {
+    active: false
+  }
   render() {
     return (
-      // <Wrapper>
-      // <Label data-active="true">Label</Label>
-      <Enhancer>
-        <Input
-          {...this.props}
-          default-style={(theme: any) => `
-              width: 100%;
-              font-size: 16;
-              box-sizing: content-box;
+      <Wrapper>
+        <Label data-active={this.state.active || !!this.props.value}>
+          {this.props.placeholder}
+        </Label>
+        <Enhancer>
+          <Input
+            {...this.props}
+            default-style={(theme: any) => `             
+              width: 100%;             
+              height:32; 
+              font-size:16;                      
+              box-sizing: border-box;             
               border: none;
-              border-bottom: 1px solid ${theme.divider};
-              padding: 6 0 7;
+              background:none;
+              border-bottom: 1px solid ${theme.divider};             
+              padding:6 0 7 ;                                              
               :hover {
                 border-bottom: 2px solid;
               }
               :focus {
-                outline: none;
-                border-bottom: 2px solid #1976d2;            
+                outline: none; 
+                border-bottom: 2px solid ${
+                  theme.accent
+                };                                   
+              }             
+              ::placeholder{
+                opacity:0;                           
               }
+              
             `}
-          onChange={(e: any) => {
-            this.props.onChange && this.props.onChange(e.target.value)
-          }}
-        >
-          {this.props.children}
-        </Input>
-      </Enhancer>
-
-      // </Wrapper>
+            onChange={(e: any) => {
+              this.props.onChange && this.props.onChange(e.target.value)
+            }}
+            onClick={(e: any) => {
+              this.props.onClick && this.props.onClick(e)
+              this.setState({ active: true })
+            }}
+            onBlur={() => {
+              this.setState({ active: false })
+            }}
+          >
+            {this.props.children}
+          </Input>
+        </Enhancer>
+      </Wrapper>
     )
   }
 }
@@ -50,13 +69,20 @@ const BaseInput = styled.input`
 
 const Input = styled(BaseInput)``
 
-// const Wrapper = styled.div`
-//   margin: 8;
-// `
+const Wrapper = styled.div`
+  position: relative;
+  height: 48px;
+  margin: 5;
+`
 const Label = styled.div`
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 12;
+  color: #757575;
+  font-size: 16;
+  pointer-events: none;
+  transform: translateY(24px);
+  transition: 0.2s;
+  transform-origin: top left;
   &[data-active='true'] {
-    color: #1976d2;
+    transform: scale(0.75);
+    color: #448aff;
   }
 `
