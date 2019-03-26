@@ -12,6 +12,7 @@ export interface BaseProps {
   margin?: string
   padding?: string
   'box-shadow'?: number
+  border?: string
   style?: any
   color?: string
   shouldAnimate?: boolean
@@ -57,8 +58,9 @@ export const Enhancer = (props: any) => {
 export const BaseView = styled.div`
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   ${(p: any) => p['sf-default-style'] && p['sf-default-style'](p.theme)}
-  ${(p: any) => p['sf-css']}
+  ${(p: any) => p['sf-css']};
 `
 /**
  * CORE CSS MECHANISM
@@ -76,6 +78,7 @@ const validCssProperty = [
   'height',
   'width',
   'display',
+  'border',
   'align-items',
   'flex-direction',
   'justify-content',

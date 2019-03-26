@@ -5,11 +5,14 @@ import View from './View'
 import Icon from './Icon'
 import Switch from './Switch'
 import Text from './Text'
+import Grid from './Grid'
+import List from './List'
 const UI = {
   Button,
   Theme,
-  Input,
   ThemeValueProvider,
+  Grid,
+  List,
   View,
   Icon,
   Text,
