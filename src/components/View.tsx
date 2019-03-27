@@ -83,7 +83,9 @@ const validCssProperty = [
   'flex-direction',
   'justify-content',
   'box-shadow',
-  'border-radius'
+  'border-radius',
+  'over-flow',
+  'max-height'
 ]
 export const sfConvertStyles = (props: any) => {
   const newProps = Object.assign({}, props)
