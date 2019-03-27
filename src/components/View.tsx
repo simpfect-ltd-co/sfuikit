@@ -84,7 +84,7 @@ const validCssProperty = [
   'justify-content',
   'box-shadow',
   'border-radius',
-  'over-flow',
+  'overflow',
   'max-height'
 ]
 export const sfConvertStyles = (props: any) => {
