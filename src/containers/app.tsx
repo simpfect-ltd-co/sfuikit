@@ -43,42 +43,33 @@ export default class Main extends React.Component {
               <UI.Input
                 // disabled
                 // plain
+                // readOnly
+                // Text="ReadOnly"
                 width="300"
                 // background="red"
                 font-size="40"
-                color-mobile="red"
-                variant="disabled"
-                // padding="40"
+                color-mobile="blue"
+                margin="40"
+                // type="password"
+                placeholder="Placeholder"
+                value={this.state.inputText}
+                onChange={val => this.setState({ inputText: val })}
+              />
+
+              <MultilineInput
+                // disabled
+                // plain
+                // readOnly
+                // width="300"
+                // background="red"
+                font-size="14"
+                color-mobile="blue"
+                margin="40"
                 // type="number"
                 placeholder="Placeholder"
                 value={this.state.inputText}
                 onChange={val => this.setState({ inputText: val })}
               />
-              {/* <UI.Input
-                variant="plain"
-                font-size="32"
-                placeholder="Placeholder"
-                value={this.state.inputText}
-                onChange={val => this.setState({ inputText: val })}
-              />
-              <UI.Input
-                font-size="16"
-                placeholder="Placeholder"
-                value={this.state.inputText}
-                onChange={val => this.setState({ inputText: val })}
-              />
-              <MultilineInput
-                // padding="20"
-                // background="blue"
-                placeholder="Placeholder"
-                value={this.state.inputText}
-                onChange={val => this.setState({ inputText: val })}
-              />
-              <textarea
-                placeholder="Placeholder"
-                rows={5}
-                style={{ background: 'red' }}
-              /> */}
             </UI.View>
           )}
         </UI.ThemeValueProvider>
