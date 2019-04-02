@@ -1,62 +1,143 @@
 import * as React from 'react'
 import { BaseProps, Enhancer, BaseView } from 'components/View'
 import styled from 'styled-components'
+const omit = require('lodash/omit')
 interface Props extends BaseProps {
   onChange?: (value: string) => void
   value?: string
+  label?: string
   placeholder?: string
-  type?: string
 }
 
 export default class UIInput extends React.Component<Props> {
+  state = {
+    isActive: false
+  }
   render() {
-    return (
-      // <Wrapper>
-      // <Label data-active="true">Label</Label>
-      <Enhancer>
-        <Input
-          {...this.props}
-          default-style={(theme: any) => `
-              width: 100%;
-              font-size: 16;
-              box-sizing: content-box;
-              border: none;
-              border-bottom: 1px solid ${theme.divider};
-              padding: 6 0 7;
-              :hover {
-                border-bottom: 2px solid;
-              }
-              :focus {
-                outline: none;
-                border-bottom: 2px solid #1976d2;            
-              }
-            `}
-          onChange={(e: any) => {
-            this.props.onChange && this.props.onChange(e.target.value)
-          }}
-        >
-          {this.props.children}
-        </Input>
-      </Enhancer>
+    if (this.props.variant === 'multiline') {
+      return (
+        <Enhancer>
+          <TextAreaWrapper
+            {...omit(this.props, 'label')}
+            default-style={(theme: any) => `
+            position: relative;
+            margin: 5 0;
+            label {
+              position: absolute;
+              top: -5px;
+              font-size: 10px;
+              left: 5;
+              color: ${theme.primary};
+              background: white;
+              padding: 0 1;
+            }
 
-      // </Wrapper>
-    )
+            textarea {
+              border: 1px solid ${theme.divider};
+              border-radius: 3px;
+              width: 100%;
+              min-height: 100px;
+              font-size: 14px;
+              padding: 12 7;
+              line-height: 23px;
+              resize: none;
+              font-family: Roboto !important;
+
+              &:focus {
+                outline: none !important;
+                padding: 11 6;
+                border: 2px solid ${theme.accent};
+              }
+            }
+        `}
+          >
+            <label>{this.props.label}</label>
+            <textarea
+              {...omit(this.props, 'label')}
+              value={this.props.value}
+              onChange={(e: any) => {
+                if (this.props.onChange) {
+                  this.props.onChange(e.target.value)
+                }
+              }}
+            />
+          </TextAreaWrapper>
+        </Enhancer>
+      )
+    } else
+      return (
+        <Enhancer>
+          <Wrapper
+            {...omit(this.props, 'label')}
+            data-active={this.state.isActive || !!this.props.value}
+            default-style={(theme: any) => `
+          position: relative;
+          label {
+            position: absolute;
+            color: ${theme.secondary_text};
+            pointer-events: none;
+            transition: 0.3s;
+            bottom: 7;
+            padding-left: 2px;
+          }
+
+          input {
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid ${theme.divider};
+            width: 100%;
+            font-size: 14px;
+            background: transparent;
+
+            &:focus {
+              outline: none;
+              border-bottom: 2px solid ${theme.accent} !important;
+              padding-top: 1px !important;
+            }
+          }
+
+          input::placeholder {
+            opacity: 0;
+            transition: 0.3s;
+          }
+
+          &[data-active='true'] {
+            label {
+              color: ${theme.primary};
+              font-size: 10px;
+              padding-bottom: 20px;
+            }
+
+            input::placeholder {
+              opacity: 1;
+            }
+          }
+          `}
+          >
+            {this.props.label && <label>{this.props.label}</label>}
+            <input
+              {...omit(this.props, 'label')}
+              onChange={(e: any) => {
+                e.stopPropagation()
+                this.props.onChange && this.props.onChange(e.target.value)
+              }}
+              onMouseDown={(e: any) => {
+                e.stopPropagation()
+
+                this.setState({ isActive: true })
+              }}
+              onBlur={(e: any) => {
+                e.stopPropagation()
+                if (!e.target.value) {
+                  this.setState({ isActive: false })
+                }
+              }}
+            />
+          </Wrapper>
+        </Enhancer>
+      )
   }
 }
-const BaseInput = styled.input`
-  ${(p: any) => p['sf-default-style'] && p['sf-default-style'](p.theme)}
-  ${(p: any) => p['sf-css']}
-`
+const Wrapper = styled(BaseView)``
 
-const Input = styled(BaseInput)``
-
-// const Wrapper = styled.div`
-//   margin: 8;
-// `
-const Label = styled.div`
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 12;
-  &[data-active='true'] {
-    color: #1976d2;
-  }
-`
+const TextAreaWrapper = styled(BaseView)``

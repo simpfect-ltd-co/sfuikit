@@ -85,7 +85,8 @@ const validCssProperty = [
   'box-shadow',
   'border-radius',
   'overflow',
-  'max-height'
+  'max-height',
+  'min-height'
 ]
 export const sfConvertStyles = (props: any) => {
   const newProps = Object.assign({}, props)

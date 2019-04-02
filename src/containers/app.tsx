@@ -3,9 +3,11 @@ import * as UI from 'components'
 import UIList from 'components/List'
 import UIGrid from 'components/Grid'
 import Theme from 'components/Theme'
+import UIInput from 'components/Input'
 export default class Main extends React.Component {
   state = {
-    value: false
+    value: false,
+    text: 'jk'
   }
   render() {
     return (
@@ -78,6 +80,20 @@ export default class Main extends React.Component {
                     </UI.View>
                   )}
                 </UIGrid>
+                <UI.Text font-size="20" padding="15">
+                  UI Input demo
+                </UI.Text>
+                <UIInput
+                  label="hihi"
+                  placeholder="nice placeholder"
+                  value={this.state.text}
+                  variant="multiline"
+                  width="300px"
+                  min-height="500px"
+                  onChange={value => {
+                    this.setState({ text: value })
+                  }}
+                />
               </UI.View>
             </UI.View>
           )}
