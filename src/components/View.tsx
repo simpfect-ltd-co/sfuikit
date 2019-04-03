@@ -19,6 +19,7 @@ export interface BaseProps {
   onClick?: (e: any) => void
   ['default-style']?: (theme: any) => string
   ['custom-style']?: (theme: any) => string
+  placeholder?: string
 }
 const DELAY_DURATION_FOR_ANIMATION = 500
 
@@ -89,7 +90,8 @@ const validCssProperty = [
   'border-radius',
   'overflow',
   'max-height',
-  'min-height'
+  'min-height',
+  'placeholder'
 ]
 export const sfConvertStyles = (props: any) => {
   const newProps = Object.assign({}, props)
