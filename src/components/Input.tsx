@@ -6,7 +6,6 @@ interface Props extends BaseProps {
   onChange?: (value: string) => void
   value?: string
   label?: string
-  placeholder?: string
 }
 
 export default class UIInput extends React.Component<Props> {
@@ -18,7 +17,7 @@ export default class UIInput extends React.Component<Props> {
       return (
         <Enhancer>
           <TextAreaWrapper
-            {...omit(this.props, 'label')}
+            {...this.props}
             default-style={(theme: any) => `
             position: relative;
             margin: 5 0;
@@ -53,7 +52,6 @@ export default class UIInput extends React.Component<Props> {
           >
             <label>{this.props.label}</label>
             <textarea
-              {...omit(this.props, 'label')}
               value={this.props.value}
               onChange={(e: any) => {
                 if (this.props.onChange) {
@@ -68,7 +66,7 @@ export default class UIInput extends React.Component<Props> {
       return (
         <Enhancer>
           <Wrapper
-            {...omit(this.props, 'label')}
+            {...this.props}
             data-active={this.state.isActive || !!this.props.value}
             default-style={(theme: any) => `
           position: relative;
@@ -116,14 +114,13 @@ export default class UIInput extends React.Component<Props> {
           >
             {this.props.label && <label>{this.props.label}</label>}
             <input
-              {...omit(this.props, 'label')}
+              value={this.props.value}
               onChange={(e: any) => {
                 e.stopPropagation()
                 this.props.onChange && this.props.onChange(e.target.value)
               }}
               onMouseDown={(e: any) => {
                 e.stopPropagation()
-
                 this.setState({ isActive: true })
               }}
               onBlur={(e: any) => {
@@ -139,5 +136,4 @@ export default class UIInput extends React.Component<Props> {
   }
 }
 const Wrapper = styled(BaseView)``
-
 const TextAreaWrapper = styled(BaseView)``

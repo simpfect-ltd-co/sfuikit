@@ -87,9 +87,17 @@ export default class Main extends React.Component {
                   label="hihi"
                   placeholder="nice placeholder"
                   value={this.state.text}
-                  variant="multiline"
-                  width="300px"
-                  min-height="500px"
+                  width="100%"
+                  custom-style={(theme: any) => `
+                     @media only screen and (max-width: 480px) {
+                      textarea {
+                        width: 200px;
+                        height: 400px;
+                        font-size: 20px;
+                      }
+                     }
+                      
+                    `}
                   onChange={value => {
                     this.setState({ text: value })
                   }}

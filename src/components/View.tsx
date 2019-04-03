@@ -17,7 +17,8 @@ export interface BaseProps {
   color?: string
   shouldAnimate?: boolean
   onClick?: (e: any) => void
-  ['default-style']?: (theme: any) => ``
+  ['default-style']?: (theme: any) => string
+  ['custom-style']?: (theme: any) => string
 }
 const DELAY_DURATION_FOR_ANIMATION = 500
 
@@ -50,7 +51,8 @@ export const Enhancer = (props: any) => {
   const el: any = props.children
   const elProps = {
     ...omit(el.props, 'default-style'),
-    'sf-default-style': el.props['default-style']
+    'sf-default-style': el.props['default-style'],
+    'sf-custom-style': el.props['custom-style']
   }
   return React.cloneElement(el, { ...sfConvertStyles(elProps) })
 }
@@ -61,6 +63,7 @@ export const BaseView = styled.div`
   box-sizing: border-box;
   ${(p: any) => p['sf-default-style'] && p['sf-default-style'](p.theme)}
   ${(p: any) => p['sf-css']};
+  ${(p: any) => p['sf-custom-style'] && p['sf-custom-style'](p.theme)}
 `
 /**
  * CORE CSS MECHANISM
