@@ -19,6 +19,7 @@ export interface BaseProps {
   onClick?: (e: any) => void
   ['default-style']?: (theme: any) => string
   ['custom-style']?: (theme: any) => string
+  cursor?: string
 }
 const DELAY_DURATION_FOR_ANIMATION = 500
 

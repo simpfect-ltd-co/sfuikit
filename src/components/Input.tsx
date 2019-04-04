@@ -56,9 +56,8 @@ export default class UIInput extends React.Component<Props> {
               placeholder={this.props.placeholder}
               value={this.props.value}
               onChange={(e: any) => {
-                if (this.props.onChange) {
-                  this.props.onChange(e.target.value)
-                }
+                e.stopPropagation()
+                this.props.onChange && this.props.onChange(e.target.value)
               }}
             />
           </TextAreaWrapper>

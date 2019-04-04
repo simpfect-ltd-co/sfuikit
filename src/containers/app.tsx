@@ -7,7 +7,9 @@ import UIInput from 'components/Input'
 export default class Main extends React.Component {
   state = {
     value: false,
-    text: ''
+    text: '',
+    selectValue: 'mot',
+    selectValues: ['mot', 'hai']
   }
   render() {
     return (
@@ -90,6 +92,7 @@ export default class Main extends React.Component {
                 </UI.Text>
                 <UI.Input
                   placeholder="nice placeholder"
+                  variant="multiline"
                   value={this.state.text}
                   width="100%"
                   custom-style={(theme: any) => `
@@ -103,9 +106,46 @@ export default class Main extends React.Component {
                       
                     `}
                   onChange={value => {
+                    console.log('valueeee', value)
                     this.setState({ text: value })
                   }}
                 />
+                <UI.Select
+                  options={[
+                    { label: 'Mot', value: 'mot' },
+                    { label: 'Hai', value: 'hai' },
+                    { label: 'Ba', value: 'ba' }
+                  ]}
+                  label="Class"
+                  // customViewItem={i => (
+                  //   <UI.View
+                  //     cursor="pointer"
+                  //     flex-direction="row"
+                  //     align-items="center"
+                  //   >
+                  //     <UI.Icon name="star" font-size="20px" />
+                  //     <UI.Text>{i.label}</UI.Text>
+                  //   </UI.View>
+                  // )}
+                  value={this.state.selectValue}
+                  onChange={value => {
+                    this.setState({ selectValue: value })
+                  }}
+                />
+                {/* <UI.MultipleSelect
+                  options={[
+                    { label: 'Mot', value: 'mot' },
+                    { label: 'Hai', value: 'hai' },
+                    { label: 'Ba', value: 'ba' }
+                  ]}
+                  customViewItem={i => <div>{i.value}</div>}
+                  selectedItemView={i => <div>{i.value}</div>}
+                  value={this.state.selectValues}
+                  valueKey={'value'}
+                  onChange={values => {
+                    this.setState({ selectValues: values })
+                  }}
+                /> */}
               </UI.View>
             </UI.View>
           )}

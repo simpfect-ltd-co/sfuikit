@@ -7,6 +7,7 @@ import Switch from './Switch'
 import Text from './Text'
 import Grid from './Grid'
 import List from './List'
+import Select from './Select'
 const UI = {
   Button,
   Theme,
@@ -17,7 +18,8 @@ const UI = {
   Icon,
   Text,
   Switch,
-  Input
+  Input,
+  Select
 }
 
 export = UI
