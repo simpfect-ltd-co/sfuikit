@@ -73,6 +73,10 @@ export const BaseView = styled.div`
  */
 
 const validCssProperty = [
+  'align-items',
+  'flex-direction',
+  'justify-content',
+  'placeholder',
   'animation',
   'animation-delay',
   'animation-direction',
