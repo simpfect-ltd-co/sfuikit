@@ -7,7 +7,7 @@ import UIInput from 'components/Input'
 export default class Main extends React.Component {
   state = {
     value: false,
-    text: 'jk'
+    text: ''
   }
   render() {
     return (
@@ -89,7 +89,6 @@ export default class Main extends React.Component {
                   UI Input demo
                 </UI.Text>
                 <UI.Input
-                  label="hihi"
                   placeholder="nice placeholder"
                   value={this.state.text}
                   width="100%"

@@ -69,7 +69,9 @@ export default class UIInput extends React.Component<Props> {
         <Enhancer>
           <Wrapper
             {...this.props}
-            data-active={this.state.isActive || !!this.props.value}
+            data-active={
+              this.state.isActive || !!this.props.value || !this.props.label
+            }
             default-style={(theme: any) => `
           position: relative;
           label {
