@@ -88,7 +88,7 @@ export default class Main extends React.Component {
                 >
                   UI Input demo
                 </UI.Text>
-                <UIInput
+                <UI.Input
                   label="hihi"
                   placeholder="nice placeholder"
                   value={this.state.text}
