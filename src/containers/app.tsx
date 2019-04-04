@@ -80,7 +80,12 @@ export default class Main extends React.Component {
                     </UI.View>
                   )}
                 </UIGrid>
-                <UI.Text font-size="20" padding="15">
+                <UI.Text
+                  font-size="20"
+                  padding="15"
+                  text-align="center"
+                  width="100%"
+                >
                   UI Input demo
                 </UI.Text>
                 <UIInput
