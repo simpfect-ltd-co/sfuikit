@@ -6,6 +6,7 @@ interface Props extends BaseProps {
   onChange?: (value: string) => void
   value?: string
   label?: string
+  placeholder?: string
 }
 
 export default class UIInput extends React.Component<Props> {
@@ -52,6 +53,7 @@ export default class UIInput extends React.Component<Props> {
           >
             <label>{this.props.label}</label>
             <textarea
+              placeholder={this.props.placeholder}
               value={this.props.value}
               onChange={(e: any) => {
                 if (this.props.onChange) {
@@ -114,6 +116,7 @@ export default class UIInput extends React.Component<Props> {
           >
             {this.props.label && <label>{this.props.label}</label>}
             <input
+              placeholder={this.props.placeholder}
               value={this.props.value}
               onChange={(e: any) => {
                 e.stopPropagation()

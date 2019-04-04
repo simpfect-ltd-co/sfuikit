@@ -19,7 +19,6 @@ export interface BaseProps {
   onClick?: (e: any) => void
   ['default-style']?: (theme: any) => string
   ['custom-style']?: (theme: any) => string
-  placeholder?: string
 }
 const DELAY_DURATION_FOR_ANIMATION = 500
 
@@ -76,7 +75,6 @@ const validCssProperty = [
   'align-items',
   'flex-direction',
   'justify-content',
-  'placeholder',
   'animation',
   'animation-delay',
   'animation-direction',
