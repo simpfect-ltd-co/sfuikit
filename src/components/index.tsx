@@ -16,7 +16,8 @@ const UI = {
   View,
   Icon,
   Text,
-  Switch
+  Switch,
+  Input
 }
 
 export = UI
