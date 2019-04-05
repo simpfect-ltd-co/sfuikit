@@ -7,7 +7,7 @@ import Switch from './Switch'
 import Text from './Text'
 import Grid from './Grid'
 import List from './List'
-import Select from './Select'
+import Select, { MultipleSelect } from './Select'
 const UI = {
   Button,
   Theme,
@@ -19,7 +19,8 @@ const UI = {
   Text,
   Switch,
   Input,
-  Select
+  Select,
+  MultipleSelect
 }
 
 export = UI

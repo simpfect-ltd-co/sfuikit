@@ -59,6 +59,44 @@ export default class Main extends React.Component {
                     </UI.View>
                   )}
                 </UIList>
+
+                <UI.Select
+                  options={[
+                    { label: 'Mot', value: 'mot' },
+                    { label: 'Hai', value: 'hai' },
+                    { label: 'Ba', value: 'ba' }
+                  ]}
+                  label="Class"
+                  // customViewItem={i => (
+                  //   <UI.View
+                  //     cursor="pointer"
+                  //     flex-direction="row"
+                  //     align-items="center"
+                  //   >
+                  //     <UI.Icon name="star" font-size="20px" />
+                  //     <UI.Text>{i.label}</UI.Text>
+                  //   </UI.View>
+                  // )}
+                  value={this.state.selectValue}
+                  onChange={value => {
+                    this.setState({ selectValue: value })
+                  }}
+                />
+                <UI.MultipleSelect
+                  options={[
+                    { label: 'Mot', value: 'mot' },
+                    { label: 'Hai', value: 'hai' },
+                    { label: 'Ba', value: 'ba' }
+                  ]}
+                  min-width="100px"
+                  customViewItem={i => <div>{i.label}</div>}
+                  selectedItemView={i => <div>{i.label}</div>}
+                  value={this.state.selectValues}
+                  label="OK"
+                  onChange={values => {
+                    this.setState({ selectValues: values })
+                  }}
+                />
                 <UI.Text font-size="20" padding="15">
                   This Grid can be responsive, try mobile view
                 </UI.Text>
@@ -110,42 +148,6 @@ export default class Main extends React.Component {
                     this.setState({ text: value })
                   }}
                 />
-                <UI.Select
-                  options={[
-                    { label: 'Mot', value: 'mot' },
-                    { label: 'Hai', value: 'hai' },
-                    { label: 'Ba', value: 'ba' }
-                  ]}
-                  label="Class"
-                  // customViewItem={i => (
-                  //   <UI.View
-                  //     cursor="pointer"
-                  //     flex-direction="row"
-                  //     align-items="center"
-                  //   >
-                  //     <UI.Icon name="star" font-size="20px" />
-                  //     <UI.Text>{i.label}</UI.Text>
-                  //   </UI.View>
-                  // )}
-                  value={this.state.selectValue}
-                  onChange={value => {
-                    this.setState({ selectValue: value })
-                  }}
-                />
-                {/* <UI.MultipleSelect
-                  options={[
-                    { label: 'Mot', value: 'mot' },
-                    { label: 'Hai', value: 'hai' },
-                    { label: 'Ba', value: 'ba' }
-                  ]}
-                  customViewItem={i => <div>{i.value}</div>}
-                  selectedItemView={i => <div>{i.value}</div>}
-                  value={this.state.selectValues}
-                  valueKey={'value'}
-                  onChange={values => {
-                    this.setState({ selectValues: values })
-                  }}
-                /> */}
               </UI.View>
             </UI.View>
           )}
