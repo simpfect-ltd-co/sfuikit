@@ -107,16 +107,17 @@ export default class Main extends React.Component {
                   padding="10"
                 >
                   {(item, ind) => (
-                    <UI.View
-                      align-items="center"
-                      justify-content="center"
-                      height="50px"
-                      margin="10"
-                      background-mobile={colors.primary}
-                      box-shadow={colors.shadow_level_2}
-                      color-mobile="white"
-                    >
-                      {item}
+                    <UI.View padding="10px">
+                      <UI.View
+                        align-items="center"
+                        justify-content="center"
+                        height="50px"
+                        background-mobile={colors.primary}
+                        box-shadow={colors.shadow_level_2}
+                        color-mobile="white"
+                      >
+                        {item}
+                      </UI.View>
                     </UI.View>
                   )}
                 </UIGrid>

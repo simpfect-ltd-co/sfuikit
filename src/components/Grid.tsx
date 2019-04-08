@@ -22,17 +22,15 @@ export default class List extends React.Component<Props> {
               flex-wrap: wrap;
             `}
         >
-          {map(this.props.items, (item: any, ind: number) => (
-            <UIView
-              key={ind}
-              width={`${100 / (this.props.column || 1)}%`}
-              width-mobile={`${100 / (this.props['column-mobile'] || 1)}%`}
-              width-tablet={`${100 / (this.props['column-tablet'] || 1)}%`}
-              width-laptop={`${100 / (this.props['column-laptop'] || 1)}%`}
-            >
-              {this.props.children(item, ind)}
-            </UIView>
-          ))}
+          {map(this.props.items, (item: any, ind: number) =>
+            React.cloneElement(this.props.children(item, ind), {
+              key: ind,
+              width: `${100 / (this.props.column || 1)}%`,
+              'width-mobile': `${100 / (this.props['column-mobile'] || 1)}%`,
+              'width-tablet': `${100 / (this.props['column-tablet'] || 1)}%`,
+              'width-laptop': `${100 / (this.props['column-laptop'] || 1)}%`
+            })
+          )}
         </Wrapper>
       </Enhancer>
     )

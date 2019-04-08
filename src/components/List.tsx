@@ -12,9 +12,9 @@ export default class List extends React.Component<Props> {
     return (
       <Enhancer>
         <Wrapper {...this.props}>
-          {map(this.props.items, (item: any, ind: number) => (
-            <UIView key={ind}>{this.props.children(item, ind)}</UIView>
-          ))}
+          {map(this.props.items, (item: any, ind: number) =>
+            React.cloneElement(this.props.children(item, ind), { key: ind })
+          )}
         </Wrapper>
       </Enhancer>
     )
