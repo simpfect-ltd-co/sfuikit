@@ -22,6 +22,7 @@ export default class List extends React.Component<Props> {
 }
 
 const Wrapper = styled(BaseView)`
+  -webkit-overflow-scrolling: touch;
   ${(p: any) => {
     switch (p.variant) {
       case 'primary':
