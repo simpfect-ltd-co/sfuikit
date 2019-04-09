@@ -150,6 +150,13 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
+              <UI.CheckBox
+                flex-direction="row"
+                value={this.state.value}
+                onChange={(value: boolean) => {
+                  this.setState({ value })
+                }}
+              />
             </UI.View>
           )}
         </UI.ThemeValueProvider>

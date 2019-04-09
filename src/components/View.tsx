@@ -13,7 +13,7 @@ export interface BaseProps {
   padding?: string
   'box-shadow'?: number
   border?: string
-  style?: any
+  // style?: any
   color?: string
   shouldAnimate?: boolean
   onClick?: (e: any) => void
@@ -28,9 +28,9 @@ export default class UIView extends React.Component<BaseProps> {
     return (
       <Enhancer>
         <BaseView
-          {...this.props}
+          {...omit(this.props, 'style')}
           onClick={(e: any) => {
-            e.stopPropagation()
+            // e.stopPropagation()
             if (this.props.shouldAnimate) {
               animatePointer(e, 1000)
               setTimeout(() => {
