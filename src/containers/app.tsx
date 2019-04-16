@@ -4,6 +4,7 @@ import UIList from 'components/List'
 import UIGrid from 'components/Grid'
 import Theme from 'components/Theme'
 import UIInput from 'components/Input'
+// import * as UI from 'components'
 export default class Main extends React.Component {
   state = {
     value: false,
@@ -152,7 +153,7 @@ export default class Main extends React.Component {
                         font-size: 20px;
                       }
                      }
-                      
+
                     `}
                   onChange={value => {
                     console.log('valueeee', value)

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import UIList from './List'
-import UIGrid from './Grid'
+import UIList from 'components/List'
+import UIGrid from 'components/Grid'
 import { isArray } from 'util'
-import UIView, { Enhancer, BaseView, BaseProps } from './View'
-import UIIcon from './Icon'
-import Theme, { ThemeValueProvider } from './Theme'
-import UICheckBox from './CheckBox'
+import UIView, { Enhancer, BaseView, BaseProps } from 'components/View'
+import UIIcon from 'components/Icon'
+import Theme, { ThemeValueProvider } from 'components/Theme'
+import UICheckBox from 'components/CheckBox'
 
 interface Props extends BaseProps {
   options: Array<any>
