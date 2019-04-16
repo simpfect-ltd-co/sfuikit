@@ -11,7 +11,7 @@ export interface BaseProps {
   height?: string
   margin?: string
   padding?: string
-  'box-shadow'?: number
+  'box-shadow'?: string
   border?: string
   // style?: any
   color?: string
