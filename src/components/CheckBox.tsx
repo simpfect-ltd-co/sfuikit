@@ -1,13 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import UIText from './Text'
-import { BaseView, Enhancer } from './View'
+import { BaseView, Enhancer, BaseProps } from './View'
 
-interface Props {
+interface Props extends BaseProps {
   value: boolean
   onChange?: any
   inverted?: boolean
-  size?: string
   label?: string
 }
 export default class CheckBox extends React.Component<Props> {

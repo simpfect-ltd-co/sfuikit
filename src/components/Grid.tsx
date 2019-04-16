@@ -25,24 +25,18 @@ export default class List extends React.Component<Props> {
           {map(this.props.items, (item: any, ind: number) =>
             React.cloneElement(this.props.children(item, ind), {
               key: ind,
-              width: `${
-                this.props['column'] ? 100 / this.props['column'] : ''
-              }%`,
-              'width-mobile': `${
-                this.props['column-mobile']
-                  ? 100 / this.props['column-mobile']
-                  : ''
-              }%`,
-              'width-tablet': `${
-                this.props['column-tablet']
-                  ? 100 / this.props['column-tablet']
-                  : ''
-              }%`,
-              'width-laptop': `${
-                this.props['column-laptop']
-                  ? 100 / this.props['column-laptop']
-                  : ''
-              }%`
+              width: this.props['column']
+                ? `${100 / (this.props['column'] || 1)}%`
+                : '',
+              'width-mobile': this.props['column-mobile']
+                ? `${100 / (this.props['column-mobile'] || 1)}%`
+                : '',
+              'width-tablet': this.props['column-tablet']
+                ? `${100 / (this.props['column-tablet'] || 1)}%`
+                : '',
+              'width-laptop': this.props['column-laptop']
+                ? `${100 / (this.props['column-laptop'] || 1)}%`
+                : ''
             })
           )}
         </Wrapper>

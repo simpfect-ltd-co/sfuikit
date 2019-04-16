@@ -52,7 +52,6 @@ export default class Main extends React.Component {
                   { label: 'ba', value: 'ba' }
                 ]}
                 column={3}
-                column-mobile={2}
               />
               <UI.View width="100%" height="auto">
                 <UIList items={[1, 2, 3]} padding="10">
@@ -162,11 +161,21 @@ export default class Main extends React.Component {
                 />
               </UI.View>
               <UI.CheckBox
+                label="hello"
+                background="red"
                 flex-direction="row"
                 value={this.state.value}
                 onChange={(value: boolean) => {
                   this.setState({ value })
                 }}
+                custom-style={(theme: any) => `
+                i {
+                  font-size: 30px;
+                }
+                span {
+                  font-size: 27px;
+                }
+                `}
               />
             </UI.View>
           )}
