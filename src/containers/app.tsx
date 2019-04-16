@@ -43,6 +43,16 @@ export default class Main extends React.Component {
               <UI.Text font-size="20" padding="15">
                 List Demo
               </UI.Text>
+              <UI.GridMultipleSelect
+                value={[{ label: 'hello', value: 'ok' }]}
+                options={[
+                  { label: 'hello', value: 'ok' },
+                  { label: 'hai', value: '2' },
+                  { label: 'ba', value: 'ba' }
+                ]}
+                column={3}
+                column-mobile={2}
+              />
               <UI.View width="100%" height="auto">
                 <UIList items={[1, 2, 3]} padding="10">
                   {(item, ind) => (

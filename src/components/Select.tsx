@@ -1,10 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import UIList from './List'
+import UIGrid from './Grid'
 import { isArray } from 'util'
 import UIView, { Enhancer, BaseView, BaseProps } from './View'
 import UIIcon from './Icon'
 import Theme, { ThemeValueProvider } from './Theme'
+import UICheckBox from './CheckBox'
 
 interface Props extends BaseProps {
   options: Array<any>
@@ -172,7 +174,7 @@ export class MultipleSelect extends Select {
   render() {
     return (
       <Enhancer>
-        <MultipleSelectWrapper
+        <Wrapper
           {...this.props}
           default-style={(theme: any) => `
             & [data-component='list-item'] {
@@ -301,66 +303,53 @@ export class MultipleSelect extends Select {
               </UIList>
             </UIView>
           ) : null}
-        </MultipleSelectWrapper>
+        </Wrapper>
+      </Enhancer>
+    )
+  }
+}
+interface GridMultipleSelectProps extends BaseProps {
+  value: any[]
+  onChange?: (item: any) => void
+  column: number
+  options: any[]
+}
+export class GridMultipleSelect extends React.Component<
+  GridMultipleSelectProps
+> {
+  handleChange = (nextValue: boolean, item: any) => {
+    if (!this.props.onChange) return
+    if (nextValue) {
+      this.props.onChange([...this.props.value, item])
+    } else {
+      this.props.onChange(this.props.value.filter(i => i.value !== item.value))
+    }
+  }
+  render() {
+    return (
+      <Enhancer>
+        <UIGrid items={this.props.options} {...this.props}>
+          {(item: any) => {
+            const selectedValues = this.props.value.filter(
+              o => o.value === item.value
+            )
+            return (
+              <UICheckBox
+                label={item.label}
+                flex-direction="row"
+                justify-content="center"
+                data-component="ui-checkbox"
+                value={!!(selectedValues && selectedValues.length)}
+                onChange={(checked: boolean) => {
+                  this.handleChange(checked, item)
+                }}
+              />
+            )
+          }}
+        </UIGrid>
       </Enhancer>
     )
   }
 }
 
 const Wrapper = styled(BaseView)``
-
-const MultipleSelectWrapper = styled(BaseView)``
-const SelectedValue = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 28px;
-  cursor: pointer;
-  i {
-    color: ${(p: any) => p.theme.secondary_text};
-  }
-  padding-left: 2px;
-`
-
-const Label = styled.div`
-  position: absolute;
-  margin-top: -14px;
-  font-size: 10px;
-  color: ${(p: any) => p.theme.primary};
-  background: white;
-`
-
-const PopupWrapper = styled.div`
-  background: white;
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  box-shadow: ${(p: any) => p.theme.shadow_level_3};
-  padding: 5px;
-  box-sizing: border-box;
-  left: 0;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-`
-
-const ListItem = styled.div`
-  &[data-selected='true'] {
-    border-left: 3px solid ${(p: any) => p.theme.accent};
-    color: ${(p: any) => p.theme.primary_text} !important;
-  }
-  padding: 5px;
-  &[data-selected='false'] {
-    border-left: 0px solid ${(p: any) => p.theme.accent};
-    color: ${(p: any) => p.theme.primary_text} !important;
-  }
-  transition: 0.3s;
-`
-
-const MultipleSelectedLabel = styled.span`
-  padding: 3px 5px;
-  background: ${(p: any) => p.theme.grey};
-  border-radius: 2px;
-  margin: 5px 2px;
-  line-height: 28px;
-`
