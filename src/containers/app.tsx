@@ -41,6 +41,7 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
+              <UI.Input label="hellos" />
               <UI.Text font-size="20" padding="15">
                 Modal Demo
               </UI.Text>

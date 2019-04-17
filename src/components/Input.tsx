@@ -7,6 +7,7 @@ interface Props extends BaseProps {
   value?: string
   label?: string
   placeholder?: string
+  type?: string
 }
 
 export default class UIInput extends React.Component<Props> {
@@ -117,6 +118,7 @@ export default class UIInput extends React.Component<Props> {
           >
             {this.props.label && <label>{this.props.label}</label>}
             <input
+              type={this.props.type}
               placeholder={this.props.placeholder}
               value={this.props.value}
               onChange={(e: any) => {
