@@ -50,11 +50,14 @@ export default class UIView extends React.Component<BaseProps> {
 
 export const Enhancer = (props: any) => {
   const el: any = props.children
+
   const elProps = {
     ...omit(el.props, 'default-style'),
     'sf-default-style': el.props['default-style'],
     'sf-custom-style': el.props['custom-style']
   }
+
+  console.log('shitttt', elProps)
   return React.cloneElement(el, { ...sfConvertStyles(elProps) })
 }
 

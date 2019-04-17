@@ -11,6 +11,7 @@ import CheckBox from './CheckBox'
 import Select from './Select/Select'
 import GridMultipleSelect from './Select/GridMultipleSelect'
 import MultipleSelect from './Select/MultipleSelect'
+import Modal from './Modal'
 const UI = {
   Button,
   Theme,
@@ -25,6 +26,7 @@ const UI = {
   Select,
   MultipleSelect,
   CheckBox,
-  GridMultipleSelect
+  GridMultipleSelect,
+  Modal
 }
 export = UI

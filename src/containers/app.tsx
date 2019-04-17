@@ -42,141 +42,27 @@ export default class Main extends React.Component {
                 />
               </UI.View>
               <UI.Text font-size="20" padding="15">
-                List Demo
+                Modal Demo
               </UI.Text>
-              <UI.GridMultipleSelect
-                value={[{ label: 'hello', value: 'ok' }]}
-                options={[
-                  { label: 'hello', value: 'ok' },
-                  { label: 'hai', value: '2' },
-                  { label: 'ba', value: 'ba' }
-                ]}
-                column={3}
-              />
-              <UI.View width="100%" height="auto">
-                <UIList items={[1, 2, 3]} padding="10">
-                  {(item, ind) => (
-                    <UI.View
-                      align-items="center"
-                      justify-content="center"
-                      height="50px"
-                      margin="10"
-                      box-shadow={colors.shadow_level_2}
-                      background={ind % 2 == 0 ? colors.accent : ''}
-                      color={ind % 2 == 0 ? 'white' : ''}
-                    >
-                      {item}
-                    </UI.View>
-                  )}
-                </UIList>
-
-                <UI.Select
-                  options={[
-                    { label: 'Mot', value: 'mot' },
-                    { label: 'Hai', value: 'hai' },
-                    { label: 'Ba', value: 'ba' }
-                  ]}
-                  label="Class"
-                  // customViewItem={i => (
-                  //   <UI.View
-                  //     cursor="pointer"
-                  //     flex-direction="row"
-                  //     align-items="center"
-                  //   >
-                  //     <UI.Icon name="star" font-size="20px" />
-                  //     <UI.Text>{i.label}</UI.Text>
-                  //   </UI.View>
-                  // )}
-                  value={this.state.selectValue}
-                  onChange={value => {
-                    this.setState({ selectValue: value })
-                  }}
-                />
-                <UI.MultipleSelect
-                  options={[
-                    { label: 'Mot', value: 'mot' },
-                    { label: 'Hai', value: 'hai' },
-                    { label: 'Ba', value: 'ba' }
-                  ]}
-                  min-width="100px"
-                  customViewItem={i => <div>{i.label}</div>}
-                  selectedItemView={i => <div>{i.label}</div>}
-                  value={this.state.selectValues}
-                  label="OK"
-                  onChange={values => {
-                    this.setState({ selectValues: values })
-                  }}
-                />
-                <UI.Text font-size="20" padding="15">
-                  This Grid can be responsive, try mobile view
-                </UI.Text>
-                <UIGrid
-                  items={[1, 2, 3]}
-                  column={2}
-                  column-mobile={1}
-                  padding="10"
-                >
-                  {(item, ind) => (
-                    <UI.View padding="10px">
-                      <UI.View
-                        align-items="center"
-                        justify-content="center"
-                        height="50px"
-                        background-mobile={colors.primary}
-                        box-shadow={colors.shadow_level_2}
-                        color-mobile="white"
-                      >
-                        {item}
-                      </UI.View>
-                    </UI.View>
-                  )}
-                </UIGrid>
-                <UI.Text
-                  font-size="20"
-                  padding="15"
-                  text-align="center"
-                  width="100%"
-                >
-                  UI Input demo
-                </UI.Text>
-                <UI.Input
-                  placeholder="nice placeholder"
-                  variant="multiline"
-                  value={this.state.text}
-                  width="100%"
-                  custom-style={(theme: any) => `
-                     @media only screen and (max-width: 480px) {
-                      textarea {
-                        width: 200px;
-                        height: 400px;
-                        font-size: 20px;
-                      }
-                     }
-
-                    `}
-                  onChange={value => {
-                    console.log('valueeee', value)
-                    this.setState({ text: value })
-                  }}
-                />
-              </UI.View>
-              <UI.CheckBox
-                label="hello"
-                background="red"
-                flex-direction="row"
-                value={this.state.value}
-                onChange={(value: boolean) => {
-                  this.setState({ value })
+              <UI.Modal
+                open={this.state.value}
+                onClick={(e: any) => {
+                  this.setState({ value: !this.state.value })
                 }}
-                custom-style={(theme: any) => `
-                i {
-                  font-size: 30px;
-                }
-                span {
-                  font-size: 27px;
-                }
-                `}
-              />
+              >
+                <UI.View
+                  width="200"
+                  height="300"
+                  background="white"
+                  border-radius="3px"
+                  width-mobile="300"
+                  onClick={(e: any) => {
+                    e.stopPropagation()
+                  }}
+                >
+                  Hello world
+                </UI.View>
+              </UI.Modal>
             </UI.View>
           )}
         </UI.ThemeValueProvider>
