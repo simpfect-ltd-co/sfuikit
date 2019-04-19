@@ -60,15 +60,24 @@ export default class CheckBox extends React.Component<Props> {
         `}
         >
           {this.props.value ? (
-            <i className="material-icons checked">check_box</i>
+            <i
+              className="material-icons checked"
+              onClick={() => {
+                this.props.onChange && this.props.onChange(false)
+              }}
+            >
+              check_box
+            </i>
           ) : (
-            <i className="material-icons">check_box_outline_blank</i>
+            <i
+              className="material-icons"
+              onClick={() => {
+                this.props.onChange && this.props.onChange(true)
+              }}
+            >
+              check_box_outline_blank
+            </i>
           )}
-          <input
-            type="checkbox"
-            checked={this.props.value}
-            onChange={this.handleChange}
-          />
           <UIText
             onClick={() => {
               this.props.onChange && this.props.onChange(!this.props.value)

@@ -10,7 +10,7 @@ export default class Main extends React.Component {
     value: false,
     text: '',
     selectValue: 'mot',
-    selectValues: ['mot', 'hai']
+    selectValues: []
   }
   render() {
     return (
@@ -43,8 +43,20 @@ export default class Main extends React.Component {
               </UI.View>
               <UI.Input label="hellos" />
               <UI.Text font-size="20" padding="15">
-                Modal Demo
+                Grid Multiple Select Demo
               </UI.Text>
+              <UI.GridMultipleSelect
+                options={[
+                  { label: 'hello', value: 'mot' },
+                  { label: 'hello1', value: 'hai' },
+                  { label: 'hello2', value: 'hihi2' }
+                ]}
+                column={3}
+                value={this.state.selectValues}
+                onChange={values => {
+                  this.setState({ selectValues: values })
+                }}
+              />
               <UI.Modal
                 open={this.state.value}
                 onClick={(e: any) => {
