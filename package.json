@@ -1,6 +1,6 @@
 {
   "name": "sfuikit",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A lite yet functional version of material ui",
   "main": "js/output/index.js",
   "scripts": {

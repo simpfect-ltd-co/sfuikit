@@ -185,6 +185,7 @@ const validCssProperty = [
   'max-width',
   'min-height',
   'min-width',
+  'order',
   'opacity',
   'orphans',
   'outline',
