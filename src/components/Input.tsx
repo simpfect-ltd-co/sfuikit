@@ -8,6 +8,7 @@ interface Props extends BaseProps {
   label?: string
   placeholder?: string
   type?: string
+  autoComplete?: string
 }
 
 export default class UIInput extends React.Component<Props> {
@@ -82,7 +83,7 @@ export default class UIInput extends React.Component<Props> {
             bottom: 7;
             padding-left: 2px;
           }
-
+        
           input {
             height: 30px;
             border: none;
@@ -118,6 +119,7 @@ export default class UIInput extends React.Component<Props> {
           >
             {this.props.label && <label>{this.props.label}</label>}
             <input
+              autoComplete={this.props.autoComplete}
               type={this.props.type}
               placeholder={this.props.placeholder}
               value={this.props.value}

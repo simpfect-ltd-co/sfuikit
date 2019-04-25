@@ -10,7 +10,9 @@ export default class Main extends React.Component {
     value: false,
     text: '',
     selectValue: 'mot',
-    selectValues: []
+    selectValues: [],
+    account: '',
+    password: ''
   }
   render() {
     return (
@@ -76,6 +78,28 @@ export default class Main extends React.Component {
                   Hello world
                 </UI.View>
               </UI.Modal>
+              <UI.Text height="30">{this.state.account}</UI.Text>
+              <UI.Text height="30">{this.state.password}</UI.Text>
+              <UI.Input
+                padding-top="12"
+                label="Account"
+                placeholder="Account"
+                value={this.state.account}
+                onChange={val => {
+                  this.setState({ account: val })
+                }}
+              />
+              <UI.Input
+                padding-top="12"
+                autoComplete="new-password"
+                type="password"
+                placeholder="Password"
+                label="Password"
+                value={this.state.password}
+                onChange={val => {
+                  this.setState({ password: val })
+                }}
+              />
             </UI.View>
           )}
         </UI.ThemeValueProvider>
