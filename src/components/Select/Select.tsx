@@ -19,6 +19,7 @@ interface Props extends BaseProps {
   label?: string
   popupStyle?: any
   plain?: boolean
+  labelKey?: string
 }
 
 export default class Select extends React.Component<Props> {
@@ -110,12 +111,17 @@ export default class Select extends React.Component<Props> {
             }}
             data-component="selected-value"
           >
-            {selectedItem &&
-              (this.props.selectedItemView ? (
+            {selectedItem ? (
+              this.props.selectedItemView ? (
                 this.props.selectedItemView(selectedItem)
               ) : (
-                <UIView cursor="pointer">{selectedItem.label}</UIView>
-              ))}
+                <UIView cursor="pointer">
+                  {selectedItem[this.props.labelKey || 'label']}
+                </UIView>
+              )
+            ) : (
+              <UIView />
+            )}
 
             <ThemeValueProvider>
               {(theme: any) => (
@@ -146,7 +152,9 @@ export default class Select extends React.Component<Props> {
                     this.props.customViewItem ? (
                       this.props.customViewItem(item)
                     ) : (
-                      <UIView cursor="pointer">{item.label}</UIView>
+                      <UIView cursor="pointer">
+                        {item[this.props.labelKey || 'label']}
+                      </UIView>
                     ),
                     {
                       'data-component': 'list-item',

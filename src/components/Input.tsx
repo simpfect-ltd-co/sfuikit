@@ -98,11 +98,11 @@ export default class UIInput extends React.Component<Props> {
               padding-top: 1px !important;
             }
           }
-
+          
           input::placeholder {
             opacity: 0;
             transition: 0.3s;
-          }
+          }         
 
           &[data-active='true'] {
             label {
