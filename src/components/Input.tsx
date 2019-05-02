@@ -20,10 +20,10 @@ export default class UIInput extends React.Component<Props> {
       setTimeout(() => {
         let inputs = document.querySelectorAll('input:-webkit-autofill')
         if (inputs.length > 0) {
-          inputs.forEach(e => {
-            e.parentElement &&
-              e.parentElement.setAttribute('data-active', 'true')
-          })
+          for (let i = 0; i < inputs.length; i++) {
+            let e = inputs[i].parentElement
+            e && e.setAttribute('data-active', 'true')
+          }
         }
       }, 200)
   }
