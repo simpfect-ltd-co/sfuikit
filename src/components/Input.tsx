@@ -8,12 +8,24 @@ interface Props extends BaseProps {
   label?: string
   placeholder?: string
   type?: string
-  autoComplete?: string
 }
 
 export default class UIInput extends React.Component<Props> {
   state = {
     isActive: false
+  }
+
+  componentDidMount() {
+    if (this.props.type == 'password')
+      setTimeout(() => {
+        let inputs = document.querySelectorAll('input:-webkit-autofill')
+        if (inputs.length > 0) {
+          inputs.forEach(e => {
+            e.parentElement &&
+              e.parentElement.setAttribute('data-active', 'true')
+          })
+        }
+      }, 200)
   }
   render() {
     if (this.props.variant === 'multiline') {
@@ -90,8 +102,8 @@ export default class UIInput extends React.Component<Props> {
             border-bottom: 1px solid ${theme.divider};
             width: 100%;
             font-size: 14px;
-            background: transparent;
-
+            background: transparent;  
+                           
             &:focus {
               outline: none;
               border-bottom: 2px solid ${theme.accent} !important;
@@ -102,7 +114,7 @@ export default class UIInput extends React.Component<Props> {
           input::placeholder {
             opacity: 0;
             transition: 0.3s;
-          }         
+          }            
 
           &[data-active='true'] {
             label {
@@ -119,7 +131,6 @@ export default class UIInput extends React.Component<Props> {
           >
             {this.props.label && <label>{this.props.label}</label>}
             <input
-              autoComplete={this.props.autoComplete}
               type={this.props.type}
               placeholder={this.props.placeholder}
               value={this.props.value}

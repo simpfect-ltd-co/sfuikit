@@ -98,7 +98,6 @@ export default class Main extends React.Component {
               />
               <UI.Input
                 padding-top="12"
-                autoComplete="new-password"
                 type="password"
                 placeholder="Password"
                 label="Password"
