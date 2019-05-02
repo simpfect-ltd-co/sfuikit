@@ -24,7 +24,7 @@ export default class Toggle extends React.Component<Props> {
           <UIView
             default-style={(theme: any) => `                         
             padding: 0 24;
-            background: ${this.props.headerBackground || 'rgba(0, 0, 0, 0.03)'};
+            background: ${this.props.headerBackground || ''};
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
