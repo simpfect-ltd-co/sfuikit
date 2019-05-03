@@ -14,6 +14,19 @@ export default class UIInput extends React.Component<Props> {
   state = {
     isActive: false
   }
+
+  componentDidMount() {
+    if (this.props.type == 'password')
+      setTimeout(() => {
+        let inputs = document.querySelectorAll('input:-webkit-autofill')
+        if (inputs.length > 0) {
+          for (let i = 0; i < inputs.length; i++) {
+            let e = inputs[i].parentElement
+            e && e.setAttribute('data-active', 'true')
+          }
+        }
+      }, 200)
+  }
   render() {
     if (this.props.variant === 'multiline') {
       return (
@@ -82,26 +95,26 @@ export default class UIInput extends React.Component<Props> {
             bottom: 7;
             padding-left: 2px;
           }
-
+        
           input {
             height: 30px;
             border: none;
             border-bottom: 1px solid ${theme.divider};
             width: 100%;
             font-size: 14px;
-            background: transparent;
-
+            background: transparent;  
+                           
             &:focus {
               outline: none;
               border-bottom: 2px solid ${theme.accent} !important;
               padding-top: 1px !important;
             }
           }
-
+          
           input::placeholder {
             opacity: 0;
             transition: 0.3s;
-          }
+          }            
 
           &[data-active='true'] {
             label {
