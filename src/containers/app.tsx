@@ -76,6 +76,13 @@ export default class Main extends React.Component {
                   Hello world
                 </UI.View>
               </UI.Modal>
+              <UI.Toggle label="Hide and Show" width="300">
+                <UI.Text>UIText</UI.Text>
+                <UI.Button>Button</UI.Button>
+                <UI.Input />
+                <UI.Icon name="person" />
+              </UI.Toggle>
+              <UI.Text>ABCD</UI.Text>
             </UI.View>
           )}
         </UI.ThemeValueProvider>
