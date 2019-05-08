@@ -13,6 +13,7 @@ import GridMultipleSelect from './Select/GridMultipleSelect'
 import MultipleSelect from './Select/MultipleSelect'
 import Modal from './Modal'
 import Toggle from './Toggle'
+import Calendar from './Calendar'
 const UI = {
   Button,
   Theme,
@@ -29,6 +30,7 @@ const UI = {
   CheckBox,
   GridMultipleSelect,
   Modal,
-  Toggle
+  Toggle,
+  Calendar
 }
 export = UI

@@ -56,8 +56,6 @@ export const Enhancer = (props: any) => {
     'sf-default-style': el.props['default-style'],
     'sf-custom-style': el.props['custom-style']
   }
-
-  console.log('shitttt', elProps)
   return React.cloneElement(el, { ...sfConvertStyles(elProps) })
 }
 

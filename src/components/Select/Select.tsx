@@ -125,7 +125,11 @@ export default class Select extends React.Component<Props> {
 
             <ThemeValueProvider>
               {(theme: any) => (
-                <UIIcon color={theme.secondary_text} name="arrow_drop_down" />
+                <UIIcon
+                  data-component="right-icon"
+                  color={theme.secondary_text}
+                  name="arrow_drop_down"
+                />
               )}
             </ThemeValueProvider>
           </UIView>

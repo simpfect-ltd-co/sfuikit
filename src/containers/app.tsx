@@ -66,6 +66,12 @@ export default class Main extends React.Component {
                   this.setState({ selectValues: values })
                 }}
               />
+              <UI.Calendar
+                value="2019-03-23"
+                onChange={(s: string) => {
+                  console.log('onChange', s)
+                }}
+              />
               <UI.Modal
                 open={this.state.value}
                 onClick={(e: any) => {
