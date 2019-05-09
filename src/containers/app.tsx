@@ -71,6 +71,8 @@ export default class Main extends React.Component {
                 onChange={(s: string) => {
                   console.log('onChange', s)
                 }}
+                isStatic
+                width="70%"
               />
               <UI.Modal
                 open={this.state.value}

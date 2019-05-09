@@ -3,6 +3,8 @@ import * as React from 'react'
 const omit = require('lodash/omit')
 import { animatePointer } from '../libs'
 export interface BaseProps {
+  display?: string
+  float?: string
   variant?: string
   'flex-direction'?: string
   'justify-content'?: string

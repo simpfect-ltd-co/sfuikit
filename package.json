@@ -1,6 +1,6 @@
 {
   "name": "sfuikit",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A lite yet functional version of material ui",
   "main": "js/output/index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "author": "Simpfect Ltd. Co",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.124",
     "@types/node": "^11.11.5",
     "file-loader": "^2.0.0",
     "lodash": "^4.17.11",
