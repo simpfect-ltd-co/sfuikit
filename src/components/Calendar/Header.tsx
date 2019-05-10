@@ -19,7 +19,6 @@ export default class extends React.Component<Props> {
         {(theme: any) => (
           <UIView
             data-component="header"
-            border-radius="3px 3px 0px 0px"
             padding="0 15"
             background={theme.primary}
           >

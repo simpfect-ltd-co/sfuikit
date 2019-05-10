@@ -14,6 +14,7 @@ import MultipleSelect from './Select/MultipleSelect'
 import Modal from './Modal'
 import Toggle from './Toggle'
 import Calendar from './Calendar'
+import DatePicker from './Calendar/DatePicker'
 const UI = {
   Button,
   Theme,
@@ -31,6 +32,7 @@ const UI = {
   GridMultipleSelect,
   Modal,
   Toggle,
-  Calendar
+  Calendar,
+  DatePicker
 }
 export = UI

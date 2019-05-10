@@ -19,7 +19,8 @@ export default class Main extends React.Component {
     selectValue: '',
     selectValues: [],
     account: '',
-    password: ''
+    password: '',
+    dateValue: ''
   }
   render() {
     return (
@@ -71,8 +72,16 @@ export default class Main extends React.Component {
                 onChange={(s: string) => {
                   console.log('onChange', s)
                 }}
-                isStatic
-                width="70%"
+                width="300px"
+                box-shadow={colors.shadow_level_2}
+              />
+              <UI.DatePicker
+                value={this.state.dateValue}
+                margin="10px"
+                onChange={(d: string) => {
+                  console.log('dateeee', d)
+                  this.setState({ dateValue: d })
+                }}
               />
               <UI.Modal
                 open={this.state.value}

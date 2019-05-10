@@ -22,6 +22,7 @@ export interface BaseProps {
   ['default-style']?: (theme: any) => string
   ['custom-style']?: (theme: any) => string
   cursor?: string
+  overflow?: string
 }
 const DELAY_DURATION_FOR_ANIMATION = 500
 

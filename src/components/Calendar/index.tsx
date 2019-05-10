@@ -61,7 +61,7 @@ export default class extends React.Component<Props> {
       <UIView
         data-component="calendar-wrapper"
         default-style={(theme: any) => `
-        width: 300px;
+        width: 280px;
         `}
         {..._.omit(this.props, 'value', 'onChange', 'isStatic')}
       >
