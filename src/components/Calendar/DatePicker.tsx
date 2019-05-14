@@ -11,7 +11,7 @@ interface Props extends BaseProps {
 export default class DatePicker extends React.Component<Props> {
   state = {
     isOpen: false,
-    selectedDate: moment().format('YYYY-MM-DD')
+    selectedDate: this.props.value || moment().format('YYYY-MM-DD')
   }
   render() {
     return (
