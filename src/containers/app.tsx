@@ -4,6 +4,7 @@ import UIList from 'components/List'
 import UIGrid from 'components/Grid'
 import Theme from 'components/Theme'
 import UIInput from 'components/Input'
+import UIDatePicker from 'components/Calendar/DatePicker'
 // import * as UI from 'components'
 
 const arr = [
@@ -20,7 +21,8 @@ export default class Main extends React.Component {
     selectValues: [],
     account: '',
     password: '',
-    dateValue: ''
+    dateValue: '',
+    date: '2019-05-11'
   }
   render() {
     return (
@@ -52,6 +54,12 @@ export default class Main extends React.Component {
                 />
               </UI.View>
               <UI.Input label="hellos" />
+              <UIDatePicker
+                value={this.state.date}
+                onChange={(val: any) => {
+                  this.setState({ date: val })
+                }}
+              />
               <UI.Text font-size="20" padding="15">
                 Grid Multiple Select Demo
               </UI.Text>
