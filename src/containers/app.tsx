@@ -88,7 +88,7 @@ export default class Main extends React.Component {
                 </UI.Button>
                 <UI.Button
                   type="text"
-                  href="https://material-ui.com/demos/buttons/#contained-buttons"
+                  href="https://material-ui.com/demos/buttons/#text-buttons"
                 >
                   Link
                 </UI.Button>
@@ -116,7 +116,7 @@ export default class Main extends React.Component {
                 </UI.Button>
                 <UI.Button
                   type="outline"
-                  href="https://material-ui.com/demos/buttons/#contained-buttons"
+                  href="https://material-ui.com/demos/buttons/#outlined-buttons"
                 >
                   Link
                 </UI.Button>

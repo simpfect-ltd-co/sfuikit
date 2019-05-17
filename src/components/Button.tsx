@@ -6,7 +6,6 @@ interface Props extends BaseProps {
   onClick?: (e: any) => void
   shouldAnimate?: boolean
   href?: string
-  plain?: boolean
   type?: string
 }
 
