@@ -4,7 +4,7 @@ import MainView from './Main'
 import Header from './Header'
 import { formatDate, generateData } from './libs'
 import { ThemeValueProvider } from 'components/Theme'
-import * as _ from 'lodash'
+const _omit = require('lodash/omit')
 interface Props extends BaseProps {
   isStatic?: boolean
   value: string
@@ -63,7 +63,7 @@ export default class extends React.Component<Props> {
         default-style={(theme: any) => `
         width: 280px;
         `}
-        {..._.omit(this.props, 'value', 'onChange', 'isStatic')}
+        {..._omit(this.props, 'value', 'onChange', 'isStatic')}
       >
         {this.props.isStatic ? null : (
           <Header

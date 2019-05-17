@@ -3,7 +3,7 @@ import UIView, { BaseProps } from '../View'
 import UIModal from '../Modal'
 import UIText from '../Text'
 import UICalendar from '../Calendar'
-import * as moment from 'moment'
+import * as moment from 'moment-mini'
 interface Props extends BaseProps {
   value: string
   onChange?: any
