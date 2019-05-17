@@ -53,7 +53,78 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.Input label="hellos" />
+              <UI.Text padding-top="20">Contained Buttons</UI.Text>
+              <UI.View
+                padding="20"
+                flex-direction="row"
+                justify-content="space-evenly"
+                background="rgba(0,0,0,0.1)"
+              >
+                <UI.Button>Default</UI.Button>
+                <UI.Button variant="primary">Primary</UI.Button>
+                <UI.Button variant="accent">Accent</UI.Button>
+                <UI.Button variant="disabled">Disabled</UI.Button>
+                <UI.Button href="https://material-ui.com/demos/buttons/#contained-buttons">
+                  Link
+                </UI.Button>
+                <UI.Button variant="file">Upload</UI.Button>
+              </UI.View>
+              <UI.Text padding-top="20">Text Buttons</UI.Text>
+              <UI.View
+                padding="20"
+                flex-direction="row"
+                justify-content="space-evenly"
+                background="rgba(0,0,0,0.1)"
+              >
+                <UI.Button type="text">Default</UI.Button>
+                <UI.Button type="text" variant="primary">
+                  Primary
+                </UI.Button>
+                <UI.Button type="text" variant="accent">
+                  Accent
+                </UI.Button>
+                <UI.Button type="text" variant="disabled">
+                  Disabled
+                </UI.Button>
+                <UI.Button
+                  type="text"
+                  href="https://material-ui.com/demos/buttons/#text-buttons"
+                >
+                  Link
+                </UI.Button>
+                <UI.Button type="text" variant="file">
+                  Upload
+                </UI.Button>
+              </UI.View>
+
+              <UI.Text padding-top="20">Outlined Buttons</UI.Text>
+              <UI.View
+                padding="20"
+                flex-direction="row"
+                justify-content="space-evenly"
+                background="rgba(0,0,0,0.1)"
+              >
+                <UI.Button type="outline">Default</UI.Button>
+                <UI.Button type="outline" variant="primary">
+                  Primary
+                </UI.Button>
+                <UI.Button type="outline" variant="accent">
+                  Accent
+                </UI.Button>
+                <UI.Button type="outline" variant="disabled">
+                  Disabled
+                </UI.Button>
+                <UI.Button
+                  type="outline"
+                  href="https://material-ui.com/demos/buttons/#outlined-buttons"
+                >
+                  Link
+                </UI.Button>
+                <UI.Button type="outline" variant="file">
+                  Upload
+                </UI.Button>
+              </UI.View>
+              {/* <UI.Input label="hellos" />
               <UIDatePicker
                 value={this.state.date}
                 onChange={(val: any) => {
@@ -153,7 +224,7 @@ export default class Main extends React.Component {
                 <UI.Input />
                 <UI.Icon name="person" />
               </UI.Toggle>
-              <UI.Text>ABCD</UI.Text>
+              <UI.Text>ABCD</UI.Text> */}
             </UI.View>
           )}
         </UI.ThemeValueProvider>
