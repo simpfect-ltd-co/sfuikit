@@ -53,6 +53,18 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
+              <UI.View padding-top="20">
+                <UI.Text height="50">{this.state.text}</UI.Text>
+                <UI.Input
+                  required
+                  padding-top="10"
+                  label="Họ tên"
+                  value={this.state.text}
+                  onChange={(val: any) => {
+                    this.setState({ text: val })
+                  }}
+                />
+              </UI.View>
               <UI.Text padding-top="20">Contained Buttons</UI.Text>
               <UI.View
                 padding="20"
