@@ -65,7 +65,7 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.Text padding-top="20">Contained Buttons</UI.Text>
+              {/* <UI.Text padding-top="20">Contained Buttons</UI.Text>
               <UI.View
                 padding="20"
                 flex-direction="row"
@@ -136,7 +136,7 @@ export default class Main extends React.Component {
                   Upload
                 </UI.Button>
               </UI.View>
-              {/* <UI.Input label="hellos" />
+              <UI.Input label="hellos" />
               <UIDatePicker
                 value={this.state.date}
                 onChange={(val: any) => {
@@ -192,7 +192,7 @@ export default class Main extends React.Component {
                 >
                   Hello world
                 </UI.View>
-              </UI.Modal>
+              </UI.Modal> */}
               <UI.Text height="30">{this.state.account}</UI.Text>
               <UI.Text height="30">{this.state.password}</UI.Text>
               <UI.Input
@@ -205,6 +205,7 @@ export default class Main extends React.Component {
                 }}
               />
               <UI.Input
+                autoComplete="new-password"
                 padding-top="12"
                 type="password"
                 placeholder="Password"
@@ -214,7 +215,7 @@ export default class Main extends React.Component {
                   this.setState({ password: val })
                 }}
               />
-              <UI.Select
+              {/* <UI.Select
                 label="Chọn tên"
                 margin="20"
                 width="300"
