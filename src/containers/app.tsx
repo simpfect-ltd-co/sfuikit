@@ -217,14 +217,14 @@ export default class Main extends React.Component {
                 onChange={val => {
                   this.setState({ selectValue: val })
                 }}
-              />
+              />*/}
               <UI.Toggle label="Hide and Show" width="300">
                 <UI.Text>UIText</UI.Text>
                 <UI.Button>Button</UI.Button>
                 <UI.Input />
                 <UI.Icon name="person" />
               </UI.Toggle>
-              <UI.Text>ABCD</UI.Text> */}
+              <UI.Text>ABCD</UI.Text>
             </UI.View>
           )}
         </UI.ThemeValueProvider>
