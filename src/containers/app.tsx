@@ -5,13 +5,19 @@ import UIGrid from 'components/Grid'
 import Theme from 'components/Theme'
 import UIInput from 'components/Input'
 import UIDatePicker from 'components/Calendar/DatePicker'
+import UIMultiSelect from 'components/Select/MultipleSelect'
+import UISelect from 'components/Select/Select'
 // import * as UI from 'components'
 
 const arr = [
   { name: 'nguyen', label: 'label', value: 1 },
   { name: 'nguyen2', label: 'label2', value: 2 },
   { name: 'nguyen3', label: 'label3', value: 3 },
-  { name: 'nguyen4', label: 'label4', value: 4 }
+  { name: 'nguyen4', label: 'label4', value: 4 },
+  { name: 'nguyen5', label: 'label5', value: 5 },
+  { name: 'nguyen6', label: 'label6', value: 6 },
+  { name: 'nguyen7', label: 'label7', value: 7 },
+  { name: 'nguyen8', label: 'label8', value: 8 }
 ]
 export default class Main extends React.Component {
   state = {
@@ -215,23 +221,41 @@ export default class Main extends React.Component {
                   this.setState({ password: val })
                 }}
               />
-              {/* <UI.Select
-                label="Chọn tên"
-                margin="20"
-                width="300"
-                options={arr}
-                // customViewItem={(item: any) => (
-                //   <UI.Text padding="5">{item.name}</UI.Text>
-                // )}
-                // selectedItemView={item => <UI.Text>{item.name}</UI.Text>}
-                value={this.state.selectValue}
-                valueKey="value"
-                labelKey="name"
-                onChange={val => {
-                  this.setState({ selectValue: val })
-                }}
-              />
-              <UI.Toggle label="Hide and Show" width="300">
+              <UI.View flex-direction="row">
+                <UIMultiSelect
+                  required
+                  label="MultiSelect"
+                  margin="20"
+                  width="300"
+                  options={arr}
+                  customViewItem={(item: any) => <UI.Text>{item.name}</UI.Text>}
+                  value={this.state.selectValue}
+                  onChange={val => {
+                    this.setState({ selectValue: val })
+                  }}
+                />
+                <UISelect
+                  required
+                  label="Select"
+                  margin="20"
+                  width="300"
+                  options={arr}
+                  customViewItem={(item: any) => (
+                    <UI.Text padding="5">{item.name}</UI.Text>
+                  )}
+                  selectedItemView={item => (
+                    <UI.Text padding-left="5">{item.name}</UI.Text>
+                  )}
+                  value={this.state.selectValue}
+                  valueKey="label"
+                  labelKey="name"
+                  onChange={val => {
+                    this.setState({ selectValue: val })
+                  }}
+                />
+              </UI.View>
+
+              {/*<UI.Toggle label="Hide and Show" width="300">
                 <UI.Text>UIText</UI.Text>
                 <UI.Button>Button</UI.Button>
                 <UI.Input />
