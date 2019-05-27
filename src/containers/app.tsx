@@ -221,6 +221,23 @@ export default class Main extends React.Component {
                   this.setState({ password: val })
                 }}
               />
+              <UI.Select
+                label="Chọn tên"
+                margin="20"
+                width="300"
+                options={arr}
+                // customViewItem={(item: any) => (
+                //   <UI.Text padding="5">{item.name}</UI.Text>
+                // )}
+                // selectedItemView={item => <UI.Text>{item.name}</UI.Text>}
+                value={this.state.selectValue}
+                valueKey="value"
+                labelKey="name"
+                onChange={val => {
+                  this.setState({ selectValue: val })
+                }}
+              />*/}
+              <UI.Toggle label="Hide and Show" width="300">
               <UI.View flex-direction="row">
                 <UIMultiSelect
                   required
@@ -261,7 +278,7 @@ export default class Main extends React.Component {
                 <UI.Input />
                 <UI.Icon name="person" />
               </UI.Toggle>
-              <UI.Text>ABCD</UI.Text> */}
+              <UI.Text>ABCD</UI.Text>
             </UI.View>
           )}
         </UI.ThemeValueProvider>
