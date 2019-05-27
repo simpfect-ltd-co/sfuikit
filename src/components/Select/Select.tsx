@@ -20,6 +20,7 @@ interface Props extends BaseProps {
   popupStyle?: any
   plain?: boolean
   labelKey?: string
+  required?: boolean
 }
 
 export default class Select extends React.Component<Props> {
@@ -87,9 +88,11 @@ export default class Select extends React.Component<Props> {
                 font-size: 10px;
                 color: ${theme.primary};
                 background: white;
+                flex-direction: row;
           `}
             >
               {this.props.label}
+              {this.props.required && <span style={{ color: 'red' }}>*</span>}
             </UIView>
           ) : null}
           <UIView
@@ -135,6 +138,7 @@ export default class Select extends React.Component<Props> {
           </UIView>
           {this.state.showPopup ? (
             <UIView
+              max-height-mobile="150px"
               default-style={(theme: any) => `
                 background: white;
                 position: absolute;
@@ -147,6 +151,7 @@ export default class Select extends React.Component<Props> {
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
                 margin-top: 30px;
+                max-height: 200px;
                 `}
               data-component="select-popup"
             >
