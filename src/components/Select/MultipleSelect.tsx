@@ -16,6 +16,7 @@ export default class MultipleSelect extends Select {
         <Wrapper
           {...this.props}
           default-style={(theme: any) => `
+              position: relative;
               & [data-component='list-item'] {
                 padding: 0px;
               }
@@ -30,9 +31,11 @@ export default class MultipleSelect extends Select {
               font-size: 10px;
               color: ${theme.primary};
               background: white;
+              flex-direction: row;
             `}
             >
               {this.props.label}
+              {this.props.required && <span style={{ color: 'red' }}>*</span>}
             </UIView>
           ) : null}
           <UIView
@@ -60,6 +63,7 @@ export default class MultipleSelect extends Select {
                 flex-direction: row;
                 min-height: 46px;
                 padding-top: 5px;
+                flex-wrap: wrap;
               `}
             >
               {this.props.options
@@ -87,6 +91,7 @@ export default class MultipleSelect extends Select {
           </UIView>
           {this.state.showPopup ? (
             <UIView
+              max-height-mobile="150"
               default-style={(theme: any) => `
               background: white;
               position: absolute;
@@ -97,8 +102,9 @@ export default class MultipleSelect extends Select {
               left: 0;
               overflow: auto;
               -webkit-overflow-scrolling: touch;
-              margin: 40 10;
-              width: calc(100% - 20px);
+              margin: 40 0;
+              width: 100%;
+              max-height: 200px;
               `}
               data-component="select-popup"
             >
