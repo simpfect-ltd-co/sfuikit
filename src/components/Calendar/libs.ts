@@ -8,7 +8,7 @@ export const generateData = () => {
     months.push(i + 1)
   }
   const years = []
-  for (let i = 1990; i < 2030; i++) {
+  for (let i = 1900; i < 2100; i++) {
     years.push(i)
   }
   const dayInWeek = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
