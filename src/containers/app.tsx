@@ -63,6 +63,15 @@ export default class Main extends React.Component {
                 value={this.state.date}
                 onChange={(val: any) => this.setState({ date: val })}
               />
+              <UISelect
+                label="Chon ten"
+                options={arr}
+                value={this.state.selectValue}
+                onChange={(val: any) => this.setState({ selectValue: val })}
+                customViewItem={(item: any) => (
+                  <UI.Text padding="5">{item.label}</UI.Text>
+                )}
+              />
             </UI.View>
           )}
         </UI.ThemeValueProvider>

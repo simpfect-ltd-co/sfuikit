@@ -26,15 +26,17 @@ interface Props extends BaseProps {
 export default class Select extends React.Component<Props> {
   componentDidUpdate() {
     if (this.state.showPopup) {
-      const selectedItem = this.props.options.find(
+      let selectedItem = this.props.options.find(
         o => o[this.props.valueKey || 'value'] == this.props.value
       )
-      let el1 = document.querySelector('[data-component="select-popup"]')
-      let el2 = Array.from(el1 ? el1.querySelectorAll('div') : []).find(
-        (el: any) =>
-          el.textContent == selectedItem[this.props.labelKey || 'label']
-      )
-      el2 && el2.scrollIntoView()
+      if (selectedItem) {
+        let el1 = document.querySelector('[data-component="select-popup"]')
+        let el2 = Array.from(el1 ? el1.querySelectorAll('div') : []).find(
+          (el: any) =>
+            el.textContent == selectedItem[this.props.labelKey || 'label']
+        )
+        el2 && el2.scrollIntoView()
+      }
     }
   }
   state = {
