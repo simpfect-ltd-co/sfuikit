@@ -176,7 +176,7 @@ export default class Select extends React.Component<Props> {
                     this.props.customViewItem ? (
                       this.props.customViewItem(item)
                     ) : (
-                      <UIView cursor="pointer">
+                      <UIView cursor="pointer" padding="5">
                         {item[this.props.labelKey || 'label']}
                       </UIView>
                     ),

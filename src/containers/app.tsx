@@ -68,9 +68,6 @@ export default class Main extends React.Component {
                 options={arr}
                 value={this.state.selectValue}
                 onChange={(val: any) => this.setState({ selectValue: val })}
-                customViewItem={(item: any) => (
-                  <UI.Text padding="5">{item.label}</UI.Text>
-                )}
               />
             </UI.View>
           )}
