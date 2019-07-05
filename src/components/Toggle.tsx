@@ -41,7 +41,7 @@ export default class Toggle extends React.Component<Props> {
               data-active={this.state.isShow}
               name="expand_more"
               custom-style={(theme: any) => `
-              transition:ease-out 0.6s;
+              transition: 0.2s;
               transform:rotate(0);
               color:${theme.secondary_text};
               &[data-active='true']{
@@ -56,7 +56,7 @@ export default class Toggle extends React.Component<Props> {
             max-height: 0;
             padding: 0 16;            
             transform: scaleY(0);            
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+           
             transform-origin: top;
             &[data-active='true']{  
               overflow-y:auto;                                              

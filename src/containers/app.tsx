@@ -34,57 +34,57 @@ export default class Main extends React.Component {
     return (
       <UI.Theme>
         <UI.ThemeValueProvider>
-          {(colors: any) => (<UI.View height="100%" width="100%" padding="10">
-            <UI.View
-              flex-direction="row"
-              align-items="center"
-              justify-content="space-between"
-              height="54px"
-              width="100%"
-              background={'white'}
-              box-shadow={colors.shadow_level_2}
-            >
-              <UI.View flex-direction="row" align-items="center">
-                <UI.Icon name="menu" padding="15 10" />
-                <UI.Text font-size="17px">Dashboard</UI.Text>
+          {(colors: any) => (
+            <UI.View height="100%" width="100%" padding="10">
+              <UI.View
+                flex-direction="row"
+                align-items="center"
+                justify-content="space-between"
+                height="54px"
+                width="100%"
+                background={'white'}
+                box-shadow={colors.shadow_level_2}
+              >
+                <UI.View flex-direction="row" align-items="center">
+                  <UI.Icon name="menu" padding="15 10" />
+                  <UI.Text font-size="17px">Dashboard</UI.Text>
+                </UI.View>
+                <UI.Switch
+                  value={this.state.value}
+                  padding="15"
+                  primaryColor={colors.primary}
+                  secondaryColor={colors.light_primary}
+                  onChange={(value: boolean) => {
+                    this.setState({ value })
+                  }}
+                />
               </UI.View>
-              <UI.Switch
-                value={this.state.value}
-                padding="15"
-                primaryColor={colors.primary}
-                secondaryColor={colors.light_primary}
-                onChange={(value: boolean) => {
-                  this.setState({ value })
-                }}
-              />
-            </UI.View>
-            <UI.View padding-top="20">
-              <UI.Text height="50">{this.state.text}</UI.Text>
+              <UI.View padding-top="20">
+                <UI.Text height="50">{this.state.text}</UI.Text>
+                <UI.Input
+                  required
+                  padding-top="10"
+                  label="Họ tên"
+                  value={this.state.text}
+                  onChange={(val: any) => {
+                    this.setState({ text: val })
+                  }}
+                />
+              </UI.View>
+              <UI.Toggle>hello skdjflas fd</UI.Toggle>
+              <UI.Text height="30">{this.state.account}</UI.Text>
+              <UI.Text height="30">{this.state.password}</UI.Text>
               <UI.Input
-                required
-                padding-top="10"
-                label="Họ tên"
-                value={this.state.text}
-                onChange={(val: any) => {
-                  this.setState({ text: val })
+                padding-top="12"
+                label="Account"
+                placeholder="Account"
+                value={this.state.account}
+                onChange={val => {
+                  this.setState({ account: val })
                 }}
               />
             </UI.View>
-
-            <UI.Text height="30">{this.state.account}</UI.Text>
-            <UI.Text height="30">{this.state.password}</UI.Text>
-            <UI.Input
-              padding-top="12"
-              label="Account"
-              placeholder="Account"
-              value={this.state.account}
-              onChange={val => {
-                this.setState({ account: val })
-              }}
-            />
-          </UI.View>
           )}
-
         </UI.ThemeValueProvider>
       </UI.Theme>
     )
