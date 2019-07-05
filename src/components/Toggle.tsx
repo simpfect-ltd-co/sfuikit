@@ -22,8 +22,7 @@ export default class Toggle extends React.Component<Props> {
           `}
         >
           <UIView
-            default-style={(theme: any) => `                         
-            padding: 0 24;
+            default-style={(theme: any) => `
             background: ${this.props.headerBackground || ''};
             flex-direction: row;
             justify-content: space-between;
@@ -53,16 +52,13 @@ export default class Toggle extends React.Component<Props> {
           <UIView
             data-active={this.state.isShow}
             default-style={(theme: any) => `                                    
-            max-height: 0;
-            padding: 0 16;            
-            transform: scaleY(0);            
-           
+            max-height: 0;          
+            transform: scaleY(0);
             transform-origin: top;
             &[data-active='true']{  
               overflow-y:auto;                                              
               height: auto;
               max-height: 400;
-              padding: 16;
               transform: scaleY(1);             
             }
           `}

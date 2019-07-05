@@ -71,7 +71,7 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.Toggle>hello skdjflas fd</UI.Toggle>
+              <UI.Toggle label="ahihi">hello skdjflas fd</UI.Toggle>
               <UI.Text height="30">{this.state.account}</UI.Text>
               <UI.Text height="30">{this.state.password}</UI.Text>
               <UI.Input
