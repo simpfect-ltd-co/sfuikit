@@ -7,10 +7,11 @@ import styled from 'styled-components'
 interface Props extends BaseProps {
   label?: string
   headerBackground?: string
+  isOpen: boolean
+  onChange: Function
 }
 
 export default class Toggle extends React.Component<Props> {
-  state = { isShow: false }
   render() {
     return (
       <Enhancer>
@@ -32,12 +33,12 @@ export default class Toggle extends React.Component<Props> {
             cursor: pointer;                             
           `}
             onClick={() => {
-              this.setState({ isShow: !this.state.isShow })
+              this.props.onChange && this.props.onChange(!this.props.isOpen)
             }}
           >
             <UIText>{this.props.label}</UIText>
             <UIIcon
-              data-active={this.state.isShow}
+              data-active={this.props.isOpen}
               name="expand_more"
               custom-style={(theme: any) => `
               transition: 0.2s;
@@ -50,7 +51,7 @@ export default class Toggle extends React.Component<Props> {
             />
           </UIView>
           <UIView
-            data-active={this.state.isShow}
+            data-active={this.props.isOpen}
             default-style={(theme: any) => `                                    
             max-height: 0;          
             transform: scaleY(0);

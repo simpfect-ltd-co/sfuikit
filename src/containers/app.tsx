@@ -21,7 +21,7 @@ const arr = [
 ]
 export default class Main extends React.Component {
   state = {
-    value: false,
+    value: true,
     text: '',
     selectValue: '',
     selectValues: [],
@@ -71,7 +71,15 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.Toggle label="ahihi">hello skdjflas fd</UI.Toggle>
+              <UI.Toggle
+                isOpen={this.state.value}
+                onChange={(isOpen: boolean) => {
+                  this.setState({ value: isOpen })
+                }}
+                label="ahihi"
+              >
+                hello skdjflas fd
+              </UI.Toggle>
               <UI.Text height="30">{this.state.account}</UI.Text>
               <UI.Text height="30">{this.state.password}</UI.Text>
               <UI.Input
