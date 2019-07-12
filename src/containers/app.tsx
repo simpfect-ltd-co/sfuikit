@@ -7,6 +7,7 @@ import UIInput from 'components/Input'
 import UIDatePicker from 'components/Calendar/DatePicker'
 import UIMultiSelect from 'components/Select/MultipleSelect'
 import UISelect from 'components/Select/Select'
+import UICalendar from 'components/Calendar'
 // import * as UI from 'components'
 
 const arr = [
@@ -89,6 +90,35 @@ export default class Main extends React.Component {
                 value={this.state.account}
                 onChange={val => {
                   this.setState({ account: val })
+                }}
+              />
+              <UICalendar
+                value={this.state.dateValue}
+                onChange={(val: any) => {
+                  this.setState({ dateValue: val })
+                }}
+                customHeader={(date: string) => {
+                  return date
+                }}
+                customMonthLabel={(month: string) => {
+                  return month
+                }}
+                customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+              />
+              <UIDatePicker
+                value={this.state.dateValue}
+                onChange={(val: any) => {
+                  this.setState({ dateValue: val })
+                }}
+                customHeader={(date: string) => {
+                  return date
+                }}
+                customMonthLabel={(month: string) => {
+                  return month
+                }}
+                customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+                customTextDate={(date: string) => {
+                  return date
                 }}
               />
             </UI.View>

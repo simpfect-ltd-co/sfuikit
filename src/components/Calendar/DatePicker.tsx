@@ -7,6 +7,10 @@ import * as moment from 'moment-mini'
 interface Props extends BaseProps {
   value: string
   onChange?: any
+  customHeader?: (date: string) => string
+  customMonthLabel?: (month: string) => string
+  customDayOfWeek?: string[]
+  customTextDate?: (date: string) => string
 }
 export default class DatePicker extends React.Component<Props> {
   state = {
@@ -34,9 +38,13 @@ export default class DatePicker extends React.Component<Props> {
             this.setState({ isOpen: true })
           }}
         >
-          {moment(this.props.value || this.state.selectedDate).format(
-            'DD/MM/YYYY'
-          )}
+          {this.props.customTextDate
+            ? this.props.customTextDate(
+                this.props.value || this.state.selectedDate
+              )
+            : moment(this.props.value || this.state.selectedDate).format(
+                'DD/MM/YYYY'
+              )}
         </UIText>
         <UIModal
           open={this.state.isOpen}
@@ -57,6 +65,9 @@ export default class DatePicker extends React.Component<Props> {
               onChange={(value: any) => {
                 this.setState({ selectedDate: value })
               }}
+              customHeader={this.props.customHeader}
+              customMonthLabel={this.props.customMonthLabel}
+              customDayOfWeek={this.props.customDayOfWeek}
             />
             <UIView
               flex-direction="row"
