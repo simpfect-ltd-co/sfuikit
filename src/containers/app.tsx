@@ -7,6 +7,8 @@ import UIInput from 'components/Input'
 import UIDatePicker from 'components/Calendar/DatePicker'
 import UIMultiSelect from 'components/Select/MultipleSelect'
 import UISelect from 'components/Select/Select'
+import UICalendar from 'components/Calendar'
+// import * as UI from 'components'
 
 const arr = [
   { name: 'nguyen', label: 'label', value: 1 },
@@ -20,7 +22,7 @@ const arr = [
 ]
 export default class Main extends React.Component {
   state = {
-    value: false,
+    value: true,
     text: '',
     selectValue: '',
     selectValues: [],
@@ -58,16 +60,66 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.Text padding-top="20">1990</UI.Text>
-              <UIDatePicker
-                value={this.state.date}
-                onChange={(val: any) => this.setState({ date: val })}
+              <UI.View padding-top="20">
+                <UI.Text height="50">{this.state.text}</UI.Text>
+                <UI.Input
+                  required
+                  padding-top="10"
+                  label="Họ tên"
+                  value={this.state.text}
+                  onChange={(val: any) => {
+                    this.setState({ text: val })
+                  }}
+                />
+              </UI.View>
+              <UI.Toggle
+                isOpen={this.state.value}
+                onChange={(isOpen: boolean) => {
+                  this.setState({ value: isOpen })
+                }}
+                label="ahihi"
+              >
+                hello skdjflas fd
+              </UI.Toggle>
+              <UI.Text height="30">{this.state.account}</UI.Text>
+              <UI.Text height="30">{this.state.password}</UI.Text>
+              <UI.Input
+                padding-top="12"
+                label="Account"
+                placeholder="Account"
+                value={this.state.account}
+                onChange={val => {
+                  this.setState({ account: val })
+                }}
               />
-              <UISelect
-                label="Chon ten"
-                options={arr}
-                value={this.state.selectValue}
-                onChange={(val: any) => this.setState({ selectValue: val })}
+              <UICalendar
+                value={this.state.dateValue}
+                onChange={(val: any) => {
+                  this.setState({ dateValue: val })
+                }}
+                customHeader={(date: string) => {
+                  return date
+                }}
+                customMonthLabel={(month: string) => {
+                  return month
+                }}
+                customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+              />
+              <UIDatePicker
+                value={this.state.dateValue}
+                onChange={(val: any) => {
+                  this.setState({ dateValue: val })
+                }}
+                customHeader={(date: string) => {
+                  return date
+                }}
+                customMonthLabel={(month: string) => {
+                  return month
+                }}
+                customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+                customTextDate={(date: string) => {
+                  return date
+                }}
               />
             </UI.View>
           )}

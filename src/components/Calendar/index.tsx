@@ -9,6 +9,9 @@ interface Props extends BaseProps {
   isStatic?: boolean
   value: string
   onChange?: any
+  customHeader?: (date: string) => string
+  customMonthLabel?: (month: string) => string
+  customDayOfWeek?: string[]
 }
 const data = generateData()
 export default class extends React.Component<Props> {
@@ -63,7 +66,14 @@ export default class extends React.Component<Props> {
         default-style={(theme: any) => `
         width: 280px;
         `}
-        {..._omit(this.props, 'value', 'onChange', 'isStatic')}
+        {..._omit(
+          this.props,
+          'value',
+          'onChange',
+          'isStatic',
+          'customHeader',
+          'customMonthLabel'
+        )}
       >
         {this.props.isStatic ? null : (
           <Header
@@ -75,6 +85,7 @@ export default class extends React.Component<Props> {
             onYearChange={(value: string) => {
               this.setState({ selectedYear: value })
             }}
+            customHeader={this.props.customHeader}
           />
         )}
         <MainView
@@ -103,6 +114,8 @@ export default class extends React.Component<Props> {
             this.setState({ selectedYear: year })
           }}
           isStatic={this.props.isStatic}
+          customMonthLabel={this.props.customMonthLabel}
+          customDayOfWeek={this.props.customDayOfWeek}
         />
       </UIView>
     )

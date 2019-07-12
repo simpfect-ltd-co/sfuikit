@@ -10,6 +10,7 @@ interface Props {
   data: any
   onYearChange?: any
   finalDate: string
+  customHeader?: (date: string) => string
 }
 
 export default class extends React.Component<Props> {
@@ -61,13 +62,15 @@ export default class extends React.Component<Props> {
               padding="0 0 10px 0"
               cursor="pointer"
             >
-              {this.props.data.dayInWeek[
-                new Date(this.props.finalDate).getDay()
-              ] +
-                ', ' +
-                this.props.finalDate.split('-')[2] +
-                ', Th' +
-                this.props.finalDate.split('-')[1]}
+              {this.props.customHeader
+                ? this.props.customHeader(this.props.finalDate)
+                : this.props.data.dayInWeek[
+                    new Date(this.props.finalDate).getDay()
+                  ] +
+                  ', ' +
+                  this.props.finalDate.split('-')[2] +
+                  ', Th' +
+                  this.props.finalDate.split('-')[1]}
             </UIText>
           </UIView>
         )}

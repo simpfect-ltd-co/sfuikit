@@ -7,10 +7,11 @@ import styled from 'styled-components'
 interface Props extends BaseProps {
   label?: string
   headerBackground?: string
+  isOpen: boolean
+  onChange: Function
 }
 
 export default class Toggle extends React.Component<Props> {
-  state = { isShow: false }
   render() {
     return (
       <Enhancer>
@@ -22,8 +23,7 @@ export default class Toggle extends React.Component<Props> {
           `}
         >
           <UIView
-            default-style={(theme: any) => `                         
-            padding: 0 24;
+            default-style={(theme: any) => `
             background: ${this.props.headerBackground || ''};
             flex-direction: row;
             justify-content: space-between;
@@ -33,15 +33,15 @@ export default class Toggle extends React.Component<Props> {
             cursor: pointer;                             
           `}
             onClick={() => {
-              this.setState({ isShow: !this.state.isShow })
+              this.props.onChange && this.props.onChange(!this.props.isOpen)
             }}
           >
             <UIText>{this.props.label}</UIText>
             <UIIcon
-              data-active={this.state.isShow}
+              data-active={this.props.isOpen}
               name="expand_more"
               custom-style={(theme: any) => `
-              transition:ease-out 0.6s;
+              transition: 0.2s;
               transform:rotate(0);
               color:${theme.secondary_text};
               &[data-active='true']{
@@ -51,18 +51,15 @@ export default class Toggle extends React.Component<Props> {
             />
           </UIView>
           <UIView
-            data-active={this.state.isShow}
+            data-active={this.props.isOpen}
             default-style={(theme: any) => `                                    
-            max-height: 0;
-            padding: 0 16;            
-            transform: scaleY(0);            
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 0;          
+            transform: scaleY(0);
             transform-origin: top;
             &[data-active='true']{  
               overflow-y:auto;                                              
               height: auto;
               max-height: 400;
-              padding: 16;
               transform: scaleY(1);             
             }
           `}

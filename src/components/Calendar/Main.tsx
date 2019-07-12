@@ -15,6 +15,8 @@ interface Props {
   onYearChange?: any
   isStatic?: boolean
   data: any
+  customMonthLabel?: (month: string) => string
+  customDayOfWeek?: string[]
 }
 
 export default class extends React.Component<Props> {
@@ -63,9 +65,15 @@ export default class extends React.Component<Props> {
                   }
                 }}
               />
-              <UIText>{`Tháng ${this.props.selectedMonth} ${
-                this.props.isStatic ? this.props.selectedYear : ''
-              }`}</UIText>
+              <UIText>
+                {this.props.customMonthLabel
+                  ? `${this.props.customMonthLabel(this.props.selectedMonth)} ${
+                      this.props.isStatic ? this.props.selectedYear : ''
+                    }`
+                  : `Tháng ${this.props.selectedMonth} ${
+                      this.props.isStatic ? this.props.selectedYear : ''
+                    }`}
+              </UIText>
               <UIIcon
                 name="chevron_right"
                 font-size="20"
@@ -100,7 +108,11 @@ export default class extends React.Component<Props> {
                 column={7}
                 padding="0 10"
                 width="300px"
-                items={['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']}
+                items={
+                  this.props.customDayOfWeek
+                    ? this.props.customDayOfWeek
+                    : ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
+                }
               >
                 {item => (
                   <UIText color={theme.divider} text-align="center">
