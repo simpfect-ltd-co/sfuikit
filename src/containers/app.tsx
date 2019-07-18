@@ -97,13 +97,13 @@ export default class Main extends React.Component {
                 onChange={(val: any) => {
                   this.setState({ dateValue: val })
                 }}
-                customHeader={(date: string) => {
-                  return date
-                }}
-                customMonthLabel={(month: string) => {
-                  return month
-                }}
-                customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+                // customHeader={(date: string) => {
+                //   return date
+                // }}
+                // customMonthLabel={(month: string) => {
+                //   return month
+                // }}
+                // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
               />
               <UI.Modal open={true} portalAddress="modal-root">
                 <UIDatePicker
@@ -111,16 +111,16 @@ export default class Main extends React.Component {
                   onChange={(val: any) => {
                     this.setState({ dateValue: val })
                   }}
-                  customHeader={(date: string) => {
-                    return date
-                  }}
-                  customMonthLabel={(month: string) => {
-                    return month
-                  }}
-                  customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
-                  customTextDate={(date: string) => {
-                    return date
-                  }}
+                  // customHeader={(date: string) => {
+                  //   return date
+                  // }}
+                  // customMonthLabel={(month: string) => {
+                  //   return month
+                  // }}
+                  // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
+                  // customTextDate={(date: string) => {
+                  //   return date
+                  // }}
                 />
               </UI.Modal>
             </UI.View>

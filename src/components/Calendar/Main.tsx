@@ -20,14 +20,30 @@ interface Props {
 }
 
 export default class extends React.Component<Props> {
+  /**
+   * emptySlots explanation
+   *
+   *  Mon Tue Wed Thu Fri Sat Sun
+   *   -   -   -   -   1   2   3
+   * => Empty Slots = 4
+   *  Mon Tue Wed Thu Fri Sat Sun
+   *   -   -   -   1   2   3   4
+   * => Empty Slots = 3
+   *
+   * We first build an array includes empty slots so that grid render will match the day of the calendar
+   */
   generateDates = () => {
-    const emptySlots = new Date(
-      this.props.selectedYear + '-' + this.props.selectedMonth + '-01'
-    ).getDay()
+    let emptySlots =
+      new Date(
+        this.props.selectedYear + '-' + this.props.selectedMonth + '-01'
+      ).getDay() - 1
+    emptySlots = (emptySlots + 7) % 7
+    console.log('empty slotss', emptySlots, this.props.data.days)
     const dates: any = []
-    for (let i = 0; i < emptySlots - 1; i++) {
-      dates.push(-1)
-    }
+    if (emptySlots > 0)
+      for (let i = 0; i < emptySlots; i++) {
+        dates.push(-1)
+      }
     for (let i = 0; i < this.props.data.days.length; i++) {
       dates.push(this.props.data.days[i])
     }
