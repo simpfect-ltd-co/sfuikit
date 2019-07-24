@@ -60,69 +60,30 @@ export default class Main extends React.Component {
                   }}
                 />
               </UI.View>
-              <UI.View padding-top="20">
-                <UI.Text height="50">{this.state.text}</UI.Text>
-                <UI.Input
-                  required
-                  padding-top="10"
-                  label="Họ tên"
-                  value={this.state.text}
+              <div>abc</div>
+              <UI.View
+                margin-top="100"
+                padding="100"
+                height="500"
+                max-height="200"
+                overflow="scroll"
+                justify-content="space-between"
+              >
+                <UI.Select
+                  options={arr}
+                  value={this.state.value}
                   onChange={(val: any) => {
-                    this.setState({ text: val })
+                    this.setState({ value: val })
                   }}
                 />
+                <UI.Text padding-top="300">ABC</UI.Text>
               </UI.View>
-              <UI.Toggle
-                isOpen={this.state.value}
-                onChange={(isOpen: boolean) => {
-                  this.setState({ value: isOpen })
-                }}
-                label="ahihi"
-              >
-                hello skdjflas fd
-              </UI.Toggle>
-              <UI.Text height="30">{this.state.account}</UI.Text>
-              <UI.Text height="30">{this.state.password}</UI.Text>
-              <UI.Input
-                padding-top="12"
-                label="Account"
-                placeholder="Account"
-                value={this.state.account}
-                onChange={val => {
-                  this.setState({ account: val })
-                }}
-              />
-              <UICalendar
+              <UIDatePicker
                 value={this.state.dateValue}
                 onChange={(val: any) => {
                   this.setState({ dateValue: val })
                 }}
-                // customHeader={(date: string) => {
-                //   return date
-                // }}
-                // customMonthLabel={(month: string) => {
-                //   return month
-                // }}
-                // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
               />
-              <UI.Modal open={true} portalAddress="modal-root">
-                <UIDatePicker
-                  value={this.state.dateValue}
-                  onChange={(val: any) => {
-                    this.setState({ dateValue: val })
-                  }}
-                  // customHeader={(date: string) => {
-                  //   return date
-                  // }}
-                  // customMonthLabel={(month: string) => {
-                  //   return month
-                  // }}
-                  // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
-                  // customTextDate={(date: string) => {
-                  //   return date
-                  // }}
-                />
-              </UI.Modal>
             </UI.View>
           )}
         </UI.ThemeValueProvider>

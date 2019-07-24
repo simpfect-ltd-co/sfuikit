@@ -24,21 +24,6 @@ interface Props extends BaseProps {
 }
 
 export default class Select extends React.Component<Props> {
-  componentDidUpdate() {
-    if (this.state.showPopup) {
-      let selectedItem = this.props.options.find(
-        o => o[this.props.valueKey || 'value'] == this.props.value
-      )
-      if (selectedItem) {
-        let el1 = document.querySelector('[data-component="select-popup"]')
-        let el2 = Array.from(el1 ? el1.querySelectorAll('div') : []).find(
-          (el: any) =>
-            el.textContent == selectedItem[this.props.labelKey || 'label']
-        )
-        el2 && el2.scrollIntoView()
-      }
-    }
-  }
   state = {
     showPopup: false
   }
@@ -125,7 +110,19 @@ export default class Select extends React.Component<Props> {
           padding-left: 2px;
           `}
             onClick={() => {
-              this.setState({ showPopup: !this.state.showPopup })
+              this.setState({ showPopup: !this.state.showPopup }, () => {
+                if (this.state.showPopup) {
+                  let popupElement = document.querySelector(
+                    '[data-component="select-popup"]'
+                  )
+                  if (selectedItem && popupElement) {
+                    let index = this.props.options.indexOf(selectedItem)
+                    let scrollHeight = popupElement.scrollHeight
+                    popupElement.scrollTop =
+                      (index / this.props.options.length) * scrollHeight
+                  }
+                }
+              })
             }}
             data-component="selected-value"
           >
