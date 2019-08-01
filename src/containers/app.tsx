@@ -46,83 +46,17 @@ export default class Main extends React.Component {
                 background={'white'}
                 box-shadow={colors.shadow_level_2}
               >
-                <UI.View flex-direction="row" align-items="center">
-                  <UI.Icon name="menu" padding="15 10" />
-                  <UI.Text font-size="17px">Dashboard</UI.Text>
-                </UI.View>
                 <UI.Switch
-                  value={this.state.value}
+                  bind="test"
                   padding="15"
                   primaryColor={colors.primary}
                   secondaryColor={colors.light_primary}
-                  onChange={(value: boolean) => {
-                    this.setState({ value })
-                  }}
                 />
+                <UI.Switch bind="helloworld" />
+                <UI.Toggle bind="test" valueKey="isOpen">
+                  Hellow world
+                </UI.Toggle>
               </UI.View>
-              <UI.View padding-top="20">
-                <UI.Text height="50">{this.state.text}</UI.Text>
-                <UI.Input
-                  required
-                  padding-top="10"
-                  label="Họ tên"
-                  value={this.state.text}
-                  onChange={(val: any) => {
-                    this.setState({ text: val })
-                  }}
-                />
-              </UI.View>
-              <UI.Toggle
-                isOpen={this.state.value}
-                onChange={(isOpen: boolean) => {
-                  this.setState({ value: isOpen })
-                }}
-                label="ahihi"
-              >
-                hello skdjflas fd
-              </UI.Toggle>
-              <UI.Text height="30">{this.state.account}</UI.Text>
-              <UI.Text height="30">{this.state.password}</UI.Text>
-              <UI.Input
-                padding-top="12"
-                label="Account"
-                placeholder="Account"
-                value={this.state.account}
-                onChange={val => {
-                  this.setState({ account: val })
-                }}
-              />
-              <UICalendar
-                value={this.state.dateValue}
-                onChange={(val: any) => {
-                  this.setState({ dateValue: val })
-                }}
-                // customHeader={(date: string) => {
-                //   return date
-                // }}
-                // customMonthLabel={(month: string) => {
-                //   return month
-                // }}
-                // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
-              />
-              <UI.Modal open={true} portalAddress="modal-root">
-                <UIDatePicker
-                  value={this.state.dateValue}
-                  onChange={(val: any) => {
-                    this.setState({ dateValue: val })
-                  }}
-                  // customHeader={(date: string) => {
-                  //   return date
-                  // }}
-                  // customMonthLabel={(month: string) => {
-                  //   return month
-                  // }}
-                  // customDayOfWeek={['2', '3', '4', '5', '6', '7', '8']}
-                  // customTextDate={(date: string) => {
-                  //   return date
-                  // }}
-                />
-              </UI.Modal>
             </UI.View>
           )}
         </UI.ThemeValueProvider>

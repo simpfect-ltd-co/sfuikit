@@ -15,7 +15,25 @@ import Modal from './Modal'
 import Toggle from './Toggle'
 import Calendar from './Calendar'
 import DatePicker from './Calendar/DatePicker'
-const UI = {
+import * as React from 'react'
+import ControlTransformer from './Advanced/ControlTransformer'
+const omit = require('lodash/omit')
+
+const transformControl = (Element: any) => {
+  return class extends React.Component<any> {
+    render() {
+      return (
+        <ControlTransformer
+          bind={this.props.bind}
+          valueKey={this.props.valueKey}
+        >
+          <Element {...omit(this.props, 'bind', 'valueKey')} />
+        </ControlTransformer>
+      )
+    }
+  }
+}
+const list: any = {
   Button,
   Theme,
   ThemeValueProvider,
@@ -35,4 +53,11 @@ const UI = {
   Calendar,
   DatePicker
 }
+const UI: any = {}
+const keys = Object.keys(list)
+for (let i = 0; i < keys.length; i++) {
+  const keyString = keys[i].toString()
+  UI[keyString] = transformControl(list[keyString])
+}
+
 export = UI

@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { BaseProps, Enhancer, BaseView } from 'components/View'
 import styled from 'styled-components'
-const omit = require('lodash/omit')
-interface Props extends BaseProps {
+export interface InputInterface extends BaseProps {
   onChange?: (value: string) => void
   value?: string
   label?: string
@@ -12,7 +11,7 @@ interface Props extends BaseProps {
   autoComplete?: string
 }
 
-export default class UIInput extends React.Component<Props> {
+export default class UIInput extends React.Component<InputInterface> {
   state = {
     isActive: false
   }

@@ -3,18 +3,18 @@ import UIView, { BaseProps } from '../View'
 import MainView from './Main'
 import Header from './Header'
 import { formatDate, generateData } from './libs'
-import { ThemeValueProvider } from 'components/Theme'
+
 const _omit = require('lodash/omit')
-interface Props extends BaseProps {
+interface CalendarProps extends BaseProps {
   isStatic?: boolean
-  value: string
+  value?: string
   onChange?: any
   customHeader?: (date: string) => string
   customMonthLabel?: (month: string) => string
   customDayOfWeek?: string[]
 }
 const data = generateData()
-export default class extends React.Component<Props> {
+export default class CalendarView extends React.Component<CalendarProps> {
   state = {
     selectedYear: '',
     selectedMonth: '',

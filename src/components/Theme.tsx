@@ -1,8 +1,19 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
+export const ThemeDataContext = React.createContext({})
+window.prefs = {}
 export default class Theme extends React.Component {
+  state = {
+    ctx: this,
+    ...window.prefs
+  }
+
   render() {
-    return <ThemeProvider theme={colors}>{this.props.children}</ThemeProvider>
+    return (
+      <ThemeDataContext.Provider value={this.state}>
+        <ThemeProvider theme={colors}>{this.props.children}</ThemeProvider>
+      </ThemeDataContext.Provider>
+    )
   }
 }
 export const ThemeValueProvider = (props: any) => {

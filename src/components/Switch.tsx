@@ -1,9 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { BaseView, BaseProps, Enhancer } from 'components/View'
+import ControlTransformer from './Advanced/ControlTransformer'
 
-interface SwitchInterface extends BaseProps {
-  value: boolean
+export interface SwitchInterface extends BaseProps {
+  value?: boolean
   onChange?: any
   switchWidth?: string
   switchHeight?: string
@@ -11,7 +12,8 @@ interface SwitchInterface extends BaseProps {
   primaryColor?: string
   secondaryColor?: string
 }
-export default class Switch extends React.Component<SwitchInterface> {
+export default class SwitchView extends React.Component<SwitchInterface> {
+  shit: SwitchInterface
   render() {
     return (
       <Enhancer>
@@ -55,9 +57,8 @@ const Bar = styled.div`
   width: 100%;
   height: 70%;
   position: absolute;
-  &[data-value='false'] {
-    background: #9e9e9e;
-  }
+
+  background: #9e9e9e;
   &[data-value='true'] {
     background: ${(p: any) =>
       p['data-background'] ? p['data-background'] : '#90caf9'};
@@ -72,10 +73,9 @@ const Control = styled.div`
       ? 'width: ' + p['data-size'] + 'px; height: ' + p['data-size'] + 'px;'
       : 'width: 16px; height: 16px;'}
   box-shadow: ${(p: any) => p.theme.shadow_level_1};
-  &[data-value='false'] {
-    left: 0;
-    background: white;
-  }
+
+  left: 0;
+  background: white;
   &[data-value='true'] {
       ${(p: any) =>
         p['data-size']

@@ -1,9 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Enhancer, BaseView, BaseProps, sfConvertStyles } from 'components/View'
-const omit = require('lodash/omit')
 
-interface TextProps extends BaseProps {}
+interface TextProps extends BaseProps {
+  value?: string
+}
 export default class UIText extends React.Component<TextProps> {
   render() {
     return (
