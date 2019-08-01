@@ -1,11 +1,31 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 export const ThemeDataContext = React.createContext({})
+window.counter = 0
 window.prefs = {}
+
+const onDataChange = (o: any, callback: any) => {
+  return new Proxy(o, {
+    set(obj: any, prop: string, value: any) {
+      callback(prop, value)
+      obj[prop] = value
+      return true
+    }
+  })
+}
+
 export default class Theme extends React.Component {
   state = {
     ctx: this,
     ...window.prefs
+  }
+
+  componentDidMount() {
+    window.prefs = onDataChange(window.prefs, (prop: any, val: any) => {
+      this.setState({
+        [prop]: val
+      })
+    })
   }
 
   render() {

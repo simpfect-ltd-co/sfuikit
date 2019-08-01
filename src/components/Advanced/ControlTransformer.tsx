@@ -24,29 +24,34 @@ class ControlTransformer extends React.Component<Props> {
   }
   render() {
     const bind = this.props.bind
+    if (!bind) {
+      return this.props.children
+    }
+
     const bindValueKey = this.props.bindValueKey || 'value'
     let ctx = this.props.data.ctx
-    return bind
-      ? React.cloneElement(this.props.children, {
-          [bindValueKey]: ctx.state && ctx.state[bind] ? ctx.state[bind] : '',
-          onChange: (value: any) => {
-            ctx.setState({ [bind]: value }, () => {
-              window.prefs[bind] = value
-              if (this.props.children.props.onChange) {
-                console.warn(
-                  'It is not recommended to have onChange with bind feature'
-                )
-                this.props.children.props.onChange(value)
-              }
-            })
+    return React.cloneElement(this.props.children, {
+      [bindValueKey]: ctx.state && ctx.state[bind] ? ctx.state[bind] : '',
+      onChange: (value: any) => {
+        ctx.setState({ [bind]: value }, () => {
+          window.prefs[bind] = value
+          if (this.props.children.props.onChange) {
+            console.warn(
+              'It is not recommended to have onChange with bind feature'
+            )
+            this.props.children.props.onChange(value)
           }
         })
-      : this.props.children
+      }
+    })
   }
 }
 
-export default (props: any) => (
-  <ThemeDataContext.Consumer>
-    {(data: any) => <ControlTransformer {...props} data={data} />}
-  </ThemeDataContext.Consumer>
-)
+export default (props: any) =>
+  props.bind ? (
+    <ThemeDataContext.Consumer>
+      {(data: any) => <ControlTransformer {...props} data={data} />}
+    </ThemeDataContext.Consumer>
+  ) : (
+    <ControlTransformer {...props} />
+  )
