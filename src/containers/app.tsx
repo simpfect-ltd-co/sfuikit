@@ -47,13 +47,13 @@ export default class Main extends React.Component {
                 box-shadow={colors.shadow_level_2}
               >
                 <UI.Switch
-                  bind="test1"
+                  bind="test3"
                   padding="15"
                   primaryColor={colors.primary}
                   secondaryColor={colors.light_primary}
                   defaultValue={false}
                 />
-                <UI.Switch bind="test" defaultValue={true} />
+                <UI.Switch bind="test1" defaultValue={true} />
                 <UI.Toggle
                   bind="test2"
                   bindValueKey="isOpen"

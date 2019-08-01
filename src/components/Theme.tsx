@@ -1,8 +1,15 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 export const ThemeDataContext = React.createContext({})
-window.counter = 0
 window.prefs = {}
+
+window.setViewState = (key: string, value: any) => {
+  window.prefs[key] = value
+}
+
+window.getViewState = (key: string) => {
+  return window.prefs[key]
+}
 
 const onDataChange = (o: any, callback: any) => {
   return new Proxy(o, {

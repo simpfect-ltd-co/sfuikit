@@ -9,8 +9,19 @@ interface Props {
 }
 
 class ControlTransformer extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props)
+    console.log('hjxxx')
+    if (this.props.bind) {
+      console.log('binddd', this.props.bind)
+      if (window.prefs.hasOwnProperty([this.props.bind])) {
+        throw new Error('key duplicated::' + this.props.bind)
+      } else {
+        window.prefs[this.props.bind] = ''
+      }
+    }
+  }
   componentDidMount() {
-    console.log('jaklsfd', this.props.defaultValue)
     if (this.props.defaultValue) {
       this.props.data.ctx.setState(
         {
