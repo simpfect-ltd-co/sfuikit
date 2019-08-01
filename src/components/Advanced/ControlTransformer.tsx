@@ -5,10 +5,12 @@ interface Props {
   bind: string
   data: any
   defaultValue?: any
-  valueKey?: string // instead of value as usual, sometimes, controls have another key value like "isOpen"
+  bindValueKey?: string // instead of value as usual, sometimes, controls have another key value like "isOpen"
 }
+
 class ControlTransformer extends React.Component<Props> {
   componentDidMount() {
+    console.log('jaklsfd', this.props.defaultValue)
     if (this.props.defaultValue) {
       this.props.data.ctx.setState(
         {
@@ -22,11 +24,11 @@ class ControlTransformer extends React.Component<Props> {
   }
   render() {
     const bind = this.props.bind
-    const valueKey = this.props.valueKey || 'value'
+    const bindValueKey = this.props.bindValueKey || 'value'
     let ctx = this.props.data.ctx
     return bind
       ? React.cloneElement(this.props.children, {
-          [valueKey]: ctx.state && ctx.state[bind] ? ctx.state[bind] : '',
+          [bindValueKey]: ctx.state && ctx.state[bind] ? ctx.state[bind] : '',
           onChange: (value: any) => {
             ctx.setState({ [bind]: value }, () => {
               window.prefs[bind] = value

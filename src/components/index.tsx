@@ -25,10 +25,12 @@ const transformControl = (Element: any) => {
       return (
         <ControlTransformer
           bind={this.props.bind}
-          valueKey={this.props.valueKey}
+          bindValueKey={this.props.bindValueKey}
           defaultValue={this.props.defaultValue}
         >
-          <Element {...omit(this.props, 'bind', 'valueKey', 'defaultValue')} />
+          <Element
+            {...omit(this.props, 'bind', 'bindValueKey', 'defaultValue')}
+          />
         </ControlTransformer>
       )
     }

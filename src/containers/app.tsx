@@ -56,7 +56,7 @@ export default class Main extends React.Component {
                 <UI.Switch bind="test" defaultValue={true} />
                 <UI.Toggle
                   bind="test2"
-                  valueKey="isOpen"
+                  bindValueKey="isOpen"
                   defaultValue={true}
                   onChange={(value: boolean) => {
                     console.log('fuckkkk', value)
