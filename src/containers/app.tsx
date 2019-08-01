@@ -47,14 +47,22 @@ export default class Main extends React.Component {
                 box-shadow={colors.shadow_level_2}
               >
                 <UI.Switch
-                  bind="test"
+                  bind="test1"
                   padding="15"
                   primaryColor={colors.primary}
                   secondaryColor={colors.light_primary}
+                  defaultValue={false}
                 />
-                <UI.Switch bind="helloworld" />
-                <UI.Toggle bind="test" valueKey="isOpen">
-                  Hellow world
+                <UI.Switch bind="test" defaultValue={true} />
+                <UI.Toggle
+                  bind="test2"
+                  valueKey="isOpen"
+                  defaultValue={true}
+                  onChange={(value: boolean) => {
+                    console.log('fuckkkk', value)
+                  }}
+                >
+                  Hello world
                 </UI.Toggle>
               </UI.View>
             </UI.View>
