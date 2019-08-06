@@ -11,9 +11,7 @@ interface Props {
 class ControlTransformer extends React.Component<Props> {
   constructor(props: Props) {
     super(props)
-    console.log('hjxxx')
     if (this.props.bind) {
-      console.log('binddd', this.props.bind)
       if (window.prefs.hasOwnProperty([this.props.bind])) {
         throw new Error('key duplicated::' + this.props.bind)
       } else {
@@ -31,6 +29,12 @@ class ControlTransformer extends React.Component<Props> {
           window.prefs[this.props.bind] = this.props.defaultValue
         }
       )
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.bind) {
+      const res = delete window.prefs[this.props.bind]
     }
   }
   render() {

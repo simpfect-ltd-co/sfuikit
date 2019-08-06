@@ -35,6 +35,10 @@ export default class Theme extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    window.prefs = {}
+  }
+
   render() {
     return (
       <ThemeDataContext.Provider value={this.state}>
