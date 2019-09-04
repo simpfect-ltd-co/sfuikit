@@ -69,6 +69,13 @@ export const BaseView = styled.div`
   ${(p: any) => p['sf-default-style'] && p['sf-default-style'](p.theme)}
   ${(p: any) => p['sf-css']};
   ${(p: any) => p['sf-custom-style'] && p['sf-custom-style'](p.theme)}
+  ${(p: any) =>
+    p.theme.darkmode &&
+    `background: ${
+      p['dark-background-level']
+        ? p.theme.dark_background[p['dark-background-level']]
+        : '#121212'
+    } !important;`}
 `
 /**
  * CORE CSS MECHANISM

@@ -21,7 +21,7 @@ const onDataChange = (o: any, callback: any) => {
   })
 }
 
-export default class Theme extends React.Component {
+export default class Theme extends React.Component<{ values: any }> {
   state = {
     ctx: this,
     ...window.prefs
@@ -42,7 +42,9 @@ export default class Theme extends React.Component {
   render() {
     return (
       <ThemeDataContext.Provider value={this.state}>
-        <ThemeProvider theme={colors}>{this.props.children}</ThemeProvider>
+        <ThemeProvider theme={this.props.values ? this.props.values : colors}>
+          {this.props.children}
+        </ThemeProvider>
       </ThemeDataContext.Provider>
     )
   }
@@ -74,6 +76,20 @@ export const colors = {
   card: '#FFF',
   grey: '#e0e0e0',
   light_red: '#EF9A9A',
+  dark_background: {
+    1: '#9e9e9e',
+    2: '#757575',
+    3: '#616161',
+    4: '#424242',
+    5: '#212121'
+  },
+  bright_color: {
+    5: '#FAFAFA',
+    4: '#F5F5F5',
+    3: '#EEEEEE',
+    2: '#E0E0E0',
+    1: '#BDBDBD'
+  },
   shadow_level_2: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
   shadow_level_3: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
   shadow_level_1: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',

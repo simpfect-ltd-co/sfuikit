@@ -1,10 +1,11 @@
 import * as React from 'react'
 import * as UI from 'components'
+import { colors } from '../components/Theme'
 
 export default class Main extends React.Component {
   render() {
     return (
-      <UI.Theme>
+      <UI.Theme values={{ darkmode: true, ...colors }}>
         <UI.ThemeValueProvider>
           {(colors: any) => (
             <UI.View height="100%" width="100%" padding="10">
@@ -14,20 +15,11 @@ export default class Main extends React.Component {
                 justify-content="space-between"
                 height="54px"
                 width="100%"
-                background={'white'}
+                dark-background-level={4}
                 box-shadow={colors.shadow_level_2}
+                border-radius="3px"
               >
-                <UI.Switch bind="test1" defaultValue={true} />
-                <UI.Toggle bind="test2" bindValueKey="isOpen">
-                  <UI.Switch
-                    bind="test3"
-                    padding="15"
-                    primaryColor={colors.primary}
-                    secondaryColor={colors.light_primary}
-                    defaultValue={false}
-                  />
-                </UI.Toggle>
-                <UI.Button>jksdlf</UI.Button>
+                <UI.Text>Hello world</UI.Text>
               </UI.View>
             </UI.View>
           )}
