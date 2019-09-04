@@ -55,9 +55,10 @@ export const Enhancer = (props: any) => {
   const el: any = props.children
 
   const elProps = {
-    ...omit(el.props, 'default-style'),
+    ...omit(el.props, 'default-style', 'custom-style', 'dark-style'),
     'sf-default-style': el.props['default-style'],
-    'sf-custom-style': el.props['custom-style']
+    'sf-custom-style': el.props['custom-style'],
+    'sf-dark-style': el.props['dark-style']
   }
   return React.cloneElement(el, { ...sfConvertStyles(elProps) })
 }
@@ -71,11 +72,12 @@ export const BaseView = styled.div`
   ${(p: any) => p['sf-custom-style'] && p['sf-custom-style'](p.theme)}
   ${(p: any) =>
     p.theme.darkmode &&
+    p['dark-background-level'] &&
     `background: ${
-      p['dark-background-level']
-        ? p.theme.dark_background[p['dark-background-level']]
-        : '#121212'
+      p.theme.dark_background[p['dark-background-level']]
     } !important;`}
+    ${(p: any) =>
+      p.theme.darkmode && p['sf-dark-style'] && p['sf-dark-style'](p.theme)}
 `
 /**
  * CORE CSS MECHANISM

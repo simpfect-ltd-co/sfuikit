@@ -8,7 +8,7 @@ export default class Main extends React.Component {
       <UI.Theme values={{ darkmode: true, ...colors }}>
         <UI.ThemeValueProvider>
           {(colors: any) => (
-            <UI.View height="100%" width="100%" padding="10">
+            <UI.View height="100%" width="100%" dark-background-level={5}>
               <UI.View
                 flex-direction="row"
                 align-items="center"
@@ -16,8 +16,7 @@ export default class Main extends React.Component {
                 height="54px"
                 width="100%"
                 dark-background-level={4}
-                box-shadow={colors.shadow_level_2}
-                border-radius="3px"
+                box-shadow={colors.shadow_level_1}
               >
                 <UI.Text>Hello world</UI.Text>
               </UI.View>
