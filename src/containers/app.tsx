@@ -17,8 +17,12 @@ export default class Main extends React.Component {
                 width="100%"
                 dark-background-level={4}
                 box-shadow={colors.shadow_level_1}
-              >
+              ></UI.View>
+              <UI.View>
                 <UI.Text>Hello world</UI.Text>
+                <UI.Input placeholder="hihi"></UI.Input>
+                <UI.Input placeholder="hello" variant="multiline"></UI.Input>
+                <UI.Icon name="edit"></UI.Icon>
               </UI.View>
             </UI.View>
           )}

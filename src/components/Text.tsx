@@ -37,6 +37,6 @@ const Wrapper = styled(BaseView)`
     `color: ${
       p['bright-color-level']
         ? p.theme.bright_color[p['bright-color-level']]
-        : '#FFFFFF'
+        : p.theme.bright_color[0]
     } !important;`}
 `

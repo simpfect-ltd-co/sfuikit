@@ -161,5 +161,25 @@ export default class UIInput extends React.Component<InputInterface> {
       )
   }
 }
-const Wrapper = styled(BaseView)``
-const TextAreaWrapper = styled(BaseView)``
+const Wrapper = styled(BaseView)`
+  input {
+    ${(p: any) =>
+      p.theme.darkmode &&
+      `color: ${
+        p['bright-color-level']
+          ? p.theme.bright_color[p['bright-color-level']]
+          : p.theme.bright_color[0]
+      } !important;`}
+  }
+`
+const TextAreaWrapper = styled(BaseView)`
+  textarea {
+    ${(p: any) =>
+      p.theme.darkmode &&
+      `color: ${
+        p['bright-color-level']
+          ? p.theme.bright_color[p['bright-color-level']]
+          : p.theme.bright_color[0]
+      } !important; background: ${p.theme.dark_background[5]} !important;`}
+  }
+`

@@ -40,4 +40,12 @@ const Wrapper = styled(BaseView)`
         return ''
     }
   }}
+
+  ${(p: any) =>
+    p.theme.darkmode &&
+    `color: ${
+      p['bright-color-level']
+        ? p.theme.bright_color[p['bright-color-level']]
+        : p.theme.bright_color[0]
+    } !important;`}
 `
