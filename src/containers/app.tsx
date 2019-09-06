@@ -30,6 +30,7 @@ export default class Main extends React.Component {
                 <UI.Button type="text">Hello</UI.Button>
                 <UI.Button type="outline">Outlien</UI.Button>
                 <UI.Select
+                  label="hehe"
                   options={[
                     {
                       label: 'hello',
@@ -39,6 +40,7 @@ export default class Main extends React.Component {
                   bind="shit"
                 ></UI.Select>
                 <UI.GridMultipleSelect
+                  label="hoho"
                   options={[
                     {
                       label: 'hello',

@@ -108,6 +108,9 @@ export default class Select extends React.Component<Props> {
                 background: white;
                 flex-direction: row;
           `}
+              dark-style={(theme: any) => `
+          background: ${theme.dark_background[5]}
+        `}
             >
               {this.props.label}
               {this.props.required && <span style={{ color: 'red' }}>*</span>}
@@ -240,6 +243,9 @@ export class MultipleSelect extends Select {
             color: ${theme.primary};
             background: white;
           `}
+              dark-style={(theme: any) => `
+          background: ${theme.dark_background[5]}
+        `}
             >
               {this.props.label}
             </UIView>

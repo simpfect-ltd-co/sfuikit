@@ -67,7 +67,7 @@ export default class UIInput extends React.Component<InputInterface> {
         `}
             dark-style={(theme: any) => `
             label {
-              background: ${theme.dark_background[0]} !important;
+              background: ${theme.dark_background[5]} !important;
             }
       `}
           >
