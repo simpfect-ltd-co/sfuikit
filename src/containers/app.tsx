@@ -8,14 +8,14 @@ export default class Main extends React.Component {
       <UI.Theme values={{ darkmode: true, ...colors }}>
         <UI.ThemeValueProvider>
           {(colors: any) => (
-            <UI.View height="100%" width="100%" dark-background-level={5}>
+            <UI.View height="100%" width="100%" dark-background-level={4}>
               <UI.View
                 flex-direction="row"
                 align-items="center"
                 justify-content="space-between"
                 height="54px"
                 width="100%"
-                dark-background-level={4}
+                dark-background-level={3}
                 box-shadow={colors.shadow_level_1}
               ></UI.View>
               <UI.View>
@@ -39,6 +39,24 @@ export default class Main extends React.Component {
                   ]}
                   bind="shit"
                 ></UI.Select>
+                <UI.MultipleSelect
+                  label="hehe"
+                  options={[
+                    {
+                      label: 'hello',
+                      value: 'hahah'
+                    },
+                    {
+                      label: 'hell1o',
+                      value: 'hahah2'
+                    },
+                    {
+                      label: 'hell3o',
+                      value: 'hahah4'
+                    }
+                  ]}
+                  bind="shit4"
+                ></UI.MultipleSelect>
                 <UI.GridMultipleSelect
                   label="hoho"
                   options={[

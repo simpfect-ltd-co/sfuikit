@@ -35,6 +35,9 @@ export default class MultipleSelect extends Select {
               background: white;
               flex-direction: row;
             `}
+              dark-style={(theme: any) => `
+            background: ${theme.dark_background[4]}
+          `}
             >
               {this.props.label}
               {this.props.required && <span style={{ color: 'red' }}>*</span>}
@@ -84,7 +87,7 @@ export default class MultipleSelect extends Select {
                     line-height: 28px;
                     `}
                     dark-style={(theme: any) => `
-                      background: ${theme.dark_background[4]}
+                      background: ${theme.dark_background[3]}
                     `}
                     key={ind}
                   >

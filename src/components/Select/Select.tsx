@@ -109,7 +109,7 @@ export default class Select extends React.Component<Props> {
                 flex-direction: row;
           `}
               dark-style={(theme: any) => `
-          background: ${theme.dark_background[5]}
+          background: ${theme.dark_background[4]}
         `}
             >
               {this.props.label}
@@ -244,7 +244,7 @@ export class MultipleSelect extends Select {
             background: white;
           `}
               dark-style={(theme: any) => `
-          background: ${theme.dark_background[5]}
+          background: ${theme.dark_background[4]}
         `}
             >
               {this.props.label}
