@@ -91,4 +91,12 @@ export default class CheckBox extends React.Component<Props> {
   }
 }
 
-const Wrapper = styled(BaseView)``
+const Wrapper = styled(BaseView)`
+  ${(p: any) =>
+    p.theme.darkmode &&
+    ` i { color: ${
+      p['bright-color-level']
+        ? p.theme.bright_color[p['bright-color-level']]
+        : p.theme.bright_color[0]
+    } !important;}`}
+`

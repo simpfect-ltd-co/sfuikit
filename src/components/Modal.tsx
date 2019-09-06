@@ -27,6 +27,9 @@ export default class Modal extends React.Component<Props> {
           justify-content: center;
           z-index: 1;
       `}
+          dark-style={(theme: any) => `
+        background: ${theme.dark_background[0]}
+      `}
         >
           {this.props.children}
         </Wrapper>

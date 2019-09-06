@@ -31,6 +31,12 @@ export default class DatePicker extends React.Component<Props> {
             cursor: pointer;
         }
         `}
+        dark-style={(theme: any) => `
+        & [data-component='text-date'] {
+          background: ${theme.dark_background[2]};
+         
+      }
+        `}
       >
         <UIText
           data-component={'text-date'}
@@ -65,6 +71,7 @@ export default class DatePicker extends React.Component<Props> {
               onChange={(value: any) => {
                 this.setState({ selectedDate: value })
               }}
+              dark-background-level={4}
               customHeader={this.props.customHeader}
               customMonthLabel={this.props.customMonthLabel}
               customDayOfWeek={this.props.customDayOfWeek}
@@ -73,6 +80,7 @@ export default class DatePicker extends React.Component<Props> {
               flex-direction="row"
               justify-content="flex-end"
               padding="15"
+              dark-background-level={4}
             >
               <UIText
                 variant="accent"

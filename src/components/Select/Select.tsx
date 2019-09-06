@@ -6,10 +6,13 @@ import { isArray } from 'util'
 import UIView, { Enhancer, BaseView, BaseProps } from 'components/View'
 import UIIcon from 'components/Icon'
 import Theme, { ThemeValueProvider } from 'components/Theme'
+import UIText from 'components/Text'
 import UICheckBox from 'components/CheckBox'
+import UI from '..'
 
 interface Props extends BaseProps {
   options: Array<any>
+  'dark-background-level'?: any
   customViewItem?: (item: any) => any
   selectedItemView?: (item: any) => any
   value: any
@@ -134,7 +137,9 @@ export default class Select extends React.Component<Props> {
                 this.props.selectedItemView(selectedItem)
               ) : (
                 <UIView cursor="pointer">
-                  {selectedItem[this.props.labelKey || 'label']}
+                  <UIText>
+                    {selectedItem[this.props.labelKey || 'label']}
+                  </UIText>
                 </UIView>
               )
             ) : (
@@ -168,6 +173,17 @@ export default class Select extends React.Component<Props> {
                 margin-top: 30px;
                 max-height: 200px;
                 `}
+              dark-style={(theme: any) => `
+                  background: ${
+                    theme.dark_background[
+                      this.props['dark-background-level']
+                        ? this.props['dark-background-level']
+                        : 0
+                    ]
+                  };
+                  box-shadow: ${theme.dark_shadow_level_2};
+                  
+                `}
               data-component="select-popup"
             >
               <UIList items={this.props.options}>
@@ -177,7 +193,7 @@ export default class Select extends React.Component<Props> {
                       this.props.customViewItem(item)
                     ) : (
                       <UIView cursor="pointer" padding="5">
-                        {item[this.props.labelKey || 'label']}
+                        <UIText>{item[this.props.labelKey || 'label']}</UIText>
                       </UIView>
                     ),
                     {

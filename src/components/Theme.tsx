@@ -78,12 +78,12 @@ export const colors = {
   light_grey: '#eeeeee',
   light_red: '#EF9A9A',
   dark_background: {
+    0: '#616161',
     1: '#9e9e9e',
     2: '#757575',
     3: '#616161',
     4: '#424242',
-    5: '#212121',
-    6: 'unset'
+    5: '#212121'
   },
   bright_color: {
     5: '#FAFAFA',

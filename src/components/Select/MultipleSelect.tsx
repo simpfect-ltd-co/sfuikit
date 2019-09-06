@@ -4,6 +4,8 @@ import UIList from 'components/List'
 import Select from 'components/Select/Select'
 import { isArray } from 'util'
 import UIView, { Enhancer, BaseView } from 'components/View'
+import UIIcon from 'components/Icon'
+import UIText from 'components/Text'
 
 export default class MultipleSelect extends Select {
   state = {
@@ -81,13 +83,16 @@ export default class MultipleSelect extends Select {
                     margin: 5px 2px;
                     line-height: 28px;
                     `}
+                    dark-style={(theme: any) => `
+                      background: ${theme.dark_background[4]}
+                    `}
                     key={ind}
                   >
-                    {item.label}
+                    <UIText>{item.label}</UIText>
                   </UIView>
                 ))}
             </UIView>
-            <i className="material-icons">arrow_drop_down</i>
+            <UIIcon name="arrow_drop_down"></UIIcon>
           </UIView>
           {this.state.showPopup ? (
             <UIView
@@ -107,6 +112,15 @@ export default class MultipleSelect extends Select {
               max-height: 200px;
               `}
               data-component="select-popup"
+              dark-style={(theme: any) => `
+              background: ${
+                theme.dark_background[
+                  this.props['dark-background-level']
+                    ? this.props['dark-background-level']
+                    : 0
+                ]
+              } !important;
+              `}
             >
               <UIList items={this.props.options}>
                 {item => (
@@ -141,8 +155,11 @@ export default class MultipleSelect extends Select {
                       this.props.onChange && this.props.onChange(temp)
                     }}
                   >
-                    {this.props.customViewItem &&
-                      this.props.customViewItem(item)}
+                    {this.props.customViewItem ? (
+                      this.props.customViewItem(item)
+                    ) : (
+                      <UIText>{item.label}</UIText>
+                    )}
                   </UIView>
                 )}
               </UIList>

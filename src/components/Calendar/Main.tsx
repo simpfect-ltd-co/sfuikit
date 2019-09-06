@@ -38,7 +38,6 @@ export default class extends React.Component<Props> {
         this.props.selectedYear + '-' + this.props.selectedMonth + '-01'
       ).getDay() - 1
     emptySlots = (emptySlots + 7) % 7
-    console.log('empty slotss', emptySlots, this.props.data.days)
     const dates: any = []
     if (emptySlots > 0)
       for (let i = 0; i < emptySlots; i++) {

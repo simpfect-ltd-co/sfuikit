@@ -20,9 +20,39 @@ export default class Main extends React.Component {
               ></UI.View>
               <UI.View>
                 <UI.Text>Hello world</UI.Text>
-                <UI.Input placeholder="hihi"></UI.Input>
-                <UI.Input placeholder="hello" variant="multiline"></UI.Input>
+                <UI.Input label="test" placeholder="hihi"></UI.Input>
+                <UI.Input
+                  placeholder="hello"
+                  label="fuck you "
+                  variant="multiline"
+                ></UI.Input>
                 <UI.Icon name="edit"></UI.Icon>
+                <UI.Button type="text">Hello</UI.Button>
+                <UI.Button type="outline">Outlien</UI.Button>
+                <UI.Select
+                  options={[
+                    {
+                      label: 'hello',
+                      value: 'hahah'
+                    }
+                  ]}
+                  bind="shit"
+                ></UI.Select>
+                <UI.GridMultipleSelect
+                  options={[
+                    {
+                      label: 'hello',
+                      value: 'hahah'
+                    }
+                  ]}
+                  bind="shit22"
+                ></UI.GridMultipleSelect>
+
+                <UI.Toggle isOpen={true}>
+                  <UI.Text> ajskldfjalskdf</UI.Text>
+                </UI.Toggle>
+
+                <UI.DatePicker value="2019-01-01"></UI.DatePicker>
               </UI.View>
             </UI.View>
           )}

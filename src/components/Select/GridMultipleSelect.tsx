@@ -25,9 +25,10 @@ export default class GridMultipleSelect extends React.Component<
       <Enhancer>
         <UIGrid items={this.props.options} {...this.props}>
           {(item: any) => {
-            const selectedValues = this.props.value.filter(
-              o => o.value === item.value
-            )
+            const selectedValues =
+              (this.props.value &&
+                this.props.value.filter(o => o.value === item.value)) ||
+              null
             return (
               <UICheckBox
                 label={item.label}

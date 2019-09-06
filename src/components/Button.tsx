@@ -117,4 +117,26 @@ const Wrapper = styled(BaseView)`
       }
     }
   }}
+
+  ${(p: any) =>
+    p.theme.darkmode &&
+    p.type === 'text' &&
+    `color: ${
+      p['bright-color-level']
+        ? p.theme.bright_color[p['bright-color-level']]
+        : p.theme.bright_color[0]
+    } !important;`}
+
+    ${(p: any) =>
+      p.theme.darkmode &&
+      p.type === 'outline' &&
+      `color: ${
+        p['bright-color-level']
+          ? p.theme.bright_color[p['bright-color-level']]
+          : p.theme.bright_color[0]
+      } !important; border: 1px solid ${
+        p['bright-color-level']
+          ? p.theme.bright_color[p['bright-color-level']]
+          : p.theme.bright_color[0]
+      }`}
 `
