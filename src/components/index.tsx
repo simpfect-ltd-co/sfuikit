@@ -15,6 +15,7 @@ import Modal from './Modal'
 import Toggle from './Toggle'
 import Calendar from './Calendar'
 import DatePicker from './Calendar/DatePicker'
+import Popup from './Popup'
 import * as React from 'react'
 import ControlTransformer from './Advanced/ControlTransformer'
 const omit = require('lodash/omit')
@@ -54,7 +55,8 @@ const list: any = {
   Modal,
   Toggle,
   Calendar,
-  DatePicker
+  DatePicker,
+  Popup
 }
 const UI: any = {}
 const keys = Object.keys(list)

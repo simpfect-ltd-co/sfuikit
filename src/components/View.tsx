@@ -16,7 +16,12 @@ export interface BaseProps {
   'box-shadow'?: string
   border?: string
   // style?: any
+  transition?: string
+  position?: string
+  visibility?: string
   color?: string
+  opacity?: any
+  ref?: any
   shouldAnimate?: boolean
   onClick?: (e: any) => void
   ['default-style']?: (theme: any) => string
