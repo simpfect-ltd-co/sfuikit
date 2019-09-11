@@ -20,7 +20,7 @@ export default class Main extends React.Component {
               ></UI.View>
               <UI.View>
                 <UI.Text>Hello world</UI.Text>
-                <UI.Input label="test" placeholder="hihi"></UI.Input>
+                <UI.Input label="test" ></UI.Input>
                 <UI.Input
                   placeholder="hello"
                   label="fuck you "

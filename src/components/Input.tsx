@@ -89,7 +89,7 @@ export default class UIInput extends React.Component<InputInterface> {
           <Wrapper
             {...this.props}
             data-active={
-              this.state.isActive || !!this.props.value || !this.props.label
+              this.state.isActive || !!this.props.value || !this.props.label || !!this.props.placeholder
             }
             default-style={(theme: any) => `
           position: relative;
