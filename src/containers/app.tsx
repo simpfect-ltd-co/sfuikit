@@ -20,7 +20,7 @@ export default class Main extends React.Component {
               ></UI.View>
               <UI.View>
                 <UI.Text>Hello world</UI.Text>
-                <UI.Input label="test" ></UI.Input>
+                <UI.Input label="test"></UI.Input>
                 <UI.Input
                   placeholder="hello"
                   label="fuck you "
@@ -72,7 +72,13 @@ export default class Main extends React.Component {
                   <UI.Text> ajskldfjalskdf</UI.Text>
                 </UI.Toggle>
 
-                <UI.DatePicker value="2019-01-01"></UI.DatePicker>
+                <UI.DatePicker
+                  dark-style={(theme: any) => `
+                
+                & [data-component='text-date'] {
+                  color: red;
+                }`}
+                ></UI.DatePicker>
               </UI.View>
             </UI.View>
           )}

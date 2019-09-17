@@ -4,6 +4,7 @@ import UIModal from '../Modal'
 import UIText from '../Text'
 import UICalendar from '../Calendar'
 import * as moment from 'moment-mini'
+const omit = require('lodash/omit')
 interface Props extends BaseProps {
   value: string
   onChange?: any
@@ -20,7 +21,6 @@ export default class DatePicker extends React.Component<Props> {
   render() {
     return (
       <UIView
-        {...this.props}
         default-style={(theme: any) => `
         & [data-component='text-date'] {
             background: #f5f5f5;
@@ -30,13 +30,13 @@ export default class DatePicker extends React.Component<Props> {
             text-align: center;
             cursor: pointer;
         }
+        ${theme.darkmode &&
+          `& [data-component='text-date'] {
+            background: ${theme.dark_background[2]};
+          }
         `}
-        dark-style={(theme: any) => `
-        & [data-component='text-date'] {
-          background: ${theme.dark_background[2]};
-         
-      }
         `}
+        {...this.props}
       >
         <UIText
           data-component={'text-date'}
