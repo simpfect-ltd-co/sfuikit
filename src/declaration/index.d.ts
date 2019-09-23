@@ -402,6 +402,7 @@ declare namespace UI {
    * ### UI | Theme Props
    * ---
    * values?: {}
+   *
    * ---
    * If not specified, default `values` will be applied
    *
