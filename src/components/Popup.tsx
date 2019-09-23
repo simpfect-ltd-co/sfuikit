@@ -3,15 +3,7 @@ import * as ReactDOM from 'react-dom'
 import UIView from './View'
 import { ThemeValueProvider } from './Theme'
 
-interface Props {
-  trigger: any
-  children: any
-  direction: 'up' | 'down'
-  showPopup: boolean
-  popupStyle?: any
-  animation?: number
-}
-export default class Popup extends React.Component<Props> {
+export default class Popup extends React.Component<UI.PopupProps> {
   triggerRef: any
   popupView: any
   componentDidMount() {

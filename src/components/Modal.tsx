@@ -1,14 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import * as ReactDOM from 'react-dom'
-import { Enhancer, BaseProps, BaseView } from 'components/View'
+import { Enhancer, BaseView } from 'components/View'
 
-interface Props extends BaseProps {
-  open: boolean
-  portalAddress?: string
-}
-
-export default class Modal extends React.Component<Props> {
+export default class Modal extends React.Component<UI.ModalProps> {
   render() {
     const content = (
       <Enhancer>

@@ -3,30 +3,14 @@ import styled from 'styled-components'
 import UIList from 'components/List'
 import UIGrid from 'components/Grid'
 import { isArray } from 'util'
-import UIView, { Enhancer, BaseView, BaseProps } from 'components/View'
+import UIView, { Enhancer, BaseView } from 'components/View'
 import UIIcon from 'components/Icon'
 import Theme, { ThemeValueProvider } from 'components/Theme'
 import UIText from 'components/Text'
 import UICheckBox from 'components/CheckBox'
 import UI from '..'
 
-interface Props extends BaseProps {
-  options: Array<any>
-  'dark-background-level'?: any
-  customViewItem?: (item: any) => any
-  selectedItemView?: (item: any) => any
-  value: any
-  valueKey?: string
-  onChange: (item: any) => void
-  style?: any
-  label?: string
-  popupStyle?: any
-  plain?: boolean
-  labelKey?: string
-  required?: boolean
-}
-
-export default class Select extends React.Component<Props> {
+export default class Select extends React.Component<UI.SelectProps> {
   componentDidUpdate() {
     if (this.state.showPopup) {
       let selectedItem = this.props.options.find(
@@ -358,49 +342,6 @@ export class MultipleSelect extends Select {
             </UIView>
           ) : null}
         </Wrapper>
-      </Enhancer>
-    )
-  }
-}
-interface GridMultipleSelectProps extends BaseProps {
-  value: any[]
-  onChange?: (item: any) => void
-  column: number
-  options: any[]
-}
-export class GridMultipleSelect extends React.Component<
-  GridMultipleSelectProps
-> {
-  handleChange = (nextValue: boolean, item: any) => {
-    if (!this.props.onChange) return
-    if (nextValue) {
-      this.props.onChange([...this.props.value, item])
-    } else {
-      this.props.onChange(this.props.value.filter(i => i.value !== item.value))
-    }
-  }
-  render() {
-    return (
-      <Enhancer>
-        <UIGrid items={this.props.options} {...this.props}>
-          {(item: any) => {
-            const selectedValues = this.props.value.filter(
-              o => o.value === item.value
-            )
-            return (
-              <UICheckBox
-                label={item.label}
-                flex-direction="row"
-                justify-content="center"
-                data-component="ui-checkbox"
-                value={!!(selectedValues && selectedValues.length)}
-                onChange={(checked: boolean) => {
-                  this.handleChange(checked, item)
-                }}
-              />
-            )
-          }}
-        </UIGrid>
       </Enhancer>
     )
   }

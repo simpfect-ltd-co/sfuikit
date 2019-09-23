@@ -21,7 +21,7 @@ const onDataChange = (o: any, callback: any) => {
   })
 }
 
-export default class Theme extends React.Component<{ values: any }> {
+export default class Theme extends React.Component<UI.ThemeProps> {
   state = {
     ctx: this,
     ...window.prefs

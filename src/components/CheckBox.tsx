@@ -1,15 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import UIText from './Text'
-import { BaseView, Enhancer, BaseProps } from './View'
+import { BaseView, Enhancer } from './View'
 
-interface Props extends BaseProps {
-  value: boolean
-  onChange?: any
-  inverted?: boolean
-  label?: string
-}
-export default class CheckBox extends React.Component<Props> {
+export default class CheckBox extends React.Component<UI.CheckboxProps> {
   handleChange = (e: any) => {
     e.stopPropagation()
     if (this.props.onChange) {

@@ -1,17 +1,11 @@
 import * as React from 'react'
-import { Enhancer, BaseProps, BaseView, sfConvertStyles } from 'components/View'
+import { Enhancer, BaseView, sfConvertStyles } from 'components/View'
 import styled from 'styled-components'
 import { animatePointer } from '../libs'
-interface Props extends BaseProps {
-  onClick?: (e: any) => void
-  shouldAnimate?: boolean
-  href?: string
-  type?: string
-}
 
 const DELAY_DURATION_FOR_ANIMATION = 500
 
-export default class UIButton extends React.Component<Props> {
+export default class UIButton extends React.Component<UI.ButtonProps> {
   render() {
     return (
       <Enhancer>

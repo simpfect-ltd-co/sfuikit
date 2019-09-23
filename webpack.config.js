@@ -5,6 +5,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+var rootDir = path.resolve(__dirname)
+
+function DtsBundlePlugin() {}
+DtsBundlePlugin.prototype.apply = function(compiler) {
+  compiler.plugin('done', function() {
+    var dts = require('dts-bundle')
+
+    dts.bundle({
+      name: 'sfuikit',
+      main: rootDir + '/src/declaration/index.d.ts',
+      out: rootDir + '/js/output/index.d.ts',
+      removeSource: false,
+      outputAsModuleFolder: true
+    })
+  })
+}
 
 module.exports = (env, argv) => {
   var debug = argv.mode !== 'production'
@@ -51,7 +67,8 @@ module.exports = (env, argv) => {
         ]
       : [
           new CleanWebpackPlugin(['public']),
-          new webpack.HashedModuleIdsPlugin()
+          new webpack.HashedModuleIdsPlugin(),
+          new DtsBundlePlugin()
 
           // new BundleAnalyzerPlugin()
         ],

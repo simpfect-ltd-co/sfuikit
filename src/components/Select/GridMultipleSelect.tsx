@@ -1,16 +1,10 @@
 import * as React from 'react'
 import UIGrid from 'components/Grid'
-import { Enhancer, BaseProps } from 'components/View'
+import { Enhancer } from 'components/View'
 import UICheckBox from 'components/CheckBox'
 
-interface GridMultipleSelectProps extends BaseProps {
-  value: any[]
-  onChange?: (item: any) => void
-  column: number
-  options: any[]
-}
 export default class GridMultipleSelect extends React.Component<
-  GridMultipleSelectProps
+  UI.GridMultipleSelectProps
 > {
   handleChange = (nextValue: boolean, item: any) => {
     if (!this.props.onChange) return

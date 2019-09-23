@@ -1,17 +1,10 @@
 import * as React from 'react'
-import UIView, { BaseProps, Enhancer, BaseView } from 'components/View'
+import UIView, { Enhancer, BaseView } from 'components/View'
 import UIText from 'components/Text'
 import UIIcon from 'components/Icon'
 import styled from 'styled-components'
 
-interface Props extends BaseProps {
-  label?: string
-  headerBackground?: string
-  isOpen: boolean
-  onChange: Function
-}
-
-export default class Toggle extends React.Component<Props> {
+export default class Toggle extends React.Component<UI.ToggleProps> {
   render() {
     return (
       <Enhancer>

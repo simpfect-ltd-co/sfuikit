@@ -1,20 +1,13 @@
 import * as React from 'react'
-import UIView, { BaseProps } from '../View'
+import UIView from '../View'
 import MainView from './Main'
 import Header from './Header'
 import { formatDate, generateData } from './libs'
 
 const _omit = require('lodash/omit')
-interface CalendarProps extends BaseProps {
-  isStatic?: boolean
-  value?: string
-  onChange?: any
-  customHeader?: (date: string) => string
-  customMonthLabel?: (month: string) => string
-  customDayOfWeek?: string[]
-}
+
 const data = generateData()
-export default class CalendarView extends React.Component<CalendarProps> {
+export default class CalendarView extends React.Component<UI.CalendarProps> {
   state = {
     selectedYear: '',
     selectedMonth: '',
@@ -35,9 +28,7 @@ export default class CalendarView extends React.Component<CalendarProps> {
         },
         () => {
           this.setState({
-            finalDate: `${this.state.selectedYear}-${
-              this.state.selectedMonth
-            }-${this.state.selectedDate}`
+            finalDate: `${this.state.selectedYear}-${this.state.selectedMonth}-${this.state.selectedDate}`
           })
         }
       )
@@ -50,9 +41,7 @@ export default class CalendarView extends React.Component<CalendarProps> {
         },
         () => {
           this.setState({
-            finalDate: `${this.state.selectedYear}-${
-              this.state.selectedMonth
-            }-${this.state.selectedDate}`
+            finalDate: `${this.state.selectedYear}-${this.state.selectedMonth}-${this.state.selectedDate}`
           })
         }
       )
@@ -98,9 +87,7 @@ export default class CalendarView extends React.Component<CalendarProps> {
             this.setState(
               {
                 selectedDate: date,
-                finalDate: `${this.state.selectedYear}-${
-                  this.state.selectedMonth
-                }-${date}`
+                finalDate: `${this.state.selectedYear}-${this.state.selectedMonth}-${date}`
               },
               () => {
                 this.props.onChange && this.props.onChange(this.state.finalDate)

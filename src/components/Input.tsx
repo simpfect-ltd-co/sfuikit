@@ -1,17 +1,8 @@
 import * as React from 'react'
-import { BaseProps, Enhancer, BaseView } from 'components/View'
+import { Enhancer, BaseView } from 'components/View'
 import styled from 'styled-components'
-export interface InputInterface extends BaseProps {
-  onChange?: (value: string) => void
-  value?: string
-  label?: string
-  placeholder?: string
-  type?: string
-  required?: boolean
-  autoComplete?: string
-}
 
-export default class UIInput extends React.Component<InputInterface> {
+export default class UIInput extends React.Component<UI.InputProps> {
   state = {
     isActive: false
   }
@@ -89,7 +80,10 @@ export default class UIInput extends React.Component<InputInterface> {
           <Wrapper
             {...this.props}
             data-active={
-              this.state.isActive || !!this.props.value || !this.props.label || !!this.props.placeholder
+              this.state.isActive ||
+              !!this.props.value ||
+              !this.props.label ||
+              !!this.props.placeholder
             }
             default-style={(theme: any) => `
           position: relative;

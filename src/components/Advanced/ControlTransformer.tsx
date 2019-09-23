@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ThemeDataContext } from '../Theme'
-interface Props {
+interface ControlProps {
   children: any
   bind: string
   data: any
@@ -8,8 +8,8 @@ interface Props {
   bindValueKey?: string // instead of value as usual, sometimes, controls have another key value like "isOpen"
 }
 
-class ControlTransformer extends React.Component<Props> {
-  constructor(props: Props) {
+class ControlTransformer extends React.Component<ControlProps> {
+  constructor(props: ControlProps) {
     super(props)
     if (this.props.bind) {
       if (window.prefs.hasOwnProperty([this.props.bind])) {

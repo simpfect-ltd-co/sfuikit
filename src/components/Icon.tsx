@@ -1,15 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Enhancer, BaseView, BaseProps, sfConvertStyles } from 'components/View'
+import { Enhancer, BaseView, sfConvertStyles } from 'components/View'
 
-interface IconProps extends BaseProps {
-  name?: string
-}
 /**
  * name of icons should be taken from Google Material Icons
  * link: https://material.io/tools/icons/
  */
-export default class UIIcon extends React.Component<IconProps> {
+export default class UIIcon extends React.Component<UI.IconProps> {
   render() {
     return (
       <Enhancer>

@@ -1,13 +1,9 @@
 import * as React from 'react'
-import UIView, { BaseProps, BaseView, Enhancer } from 'components/View'
+import UIView, { BaseView, Enhancer } from 'components/View'
 import styled from 'styled-components'
 const map = require('lodash/map')
-interface Props extends BaseProps {
-  items: Array<any>
-  children: (item: any, ind: number) => React.ReactElement
-}
 
-export default class List extends React.Component<Props> {
+export default class List extends React.Component<UI.ListProps> {
   render() {
     return (
       <Enhancer>

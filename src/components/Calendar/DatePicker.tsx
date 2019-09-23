@@ -1,11 +1,11 @@
 import * as React from 'react'
-import UIView, { BaseProps } from '../View'
+import UIView from '../View'
 import UIModal from '../Modal'
 import UIText from '../Text'
 import UICalendar from '../Calendar'
 import * as moment from 'moment-mini'
 const omit = require('lodash/omit')
-interface Props extends BaseProps {
+interface DatePickerProps extends UI.BaseProps {
   value: string
   onChange?: any
   customHeader?: (date: string) => string
@@ -13,7 +13,7 @@ interface Props extends BaseProps {
   customDayOfWeek?: string[]
   customTextDate?: (date: string) => string
 }
-export default class DatePicker extends React.Component<Props> {
+export default class DatePicker extends React.Component<DatePickerProps> {
   state = {
     isOpen: false,
     selectedDate: this.props.value || moment().format('YYYY-MM-DD')

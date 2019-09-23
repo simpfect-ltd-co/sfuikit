@@ -1,11 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Enhancer, BaseView, BaseProps, sfConvertStyles } from 'components/View'
+import { Enhancer, BaseView } from 'components/View'
 
-interface TextProps extends BaseProps {
-  value?: string
-}
-export default class UIText extends React.Component<TextProps> {
+export default class UIText extends React.Component<UI.TextProps> {
   render() {
     return (
       <Enhancer>

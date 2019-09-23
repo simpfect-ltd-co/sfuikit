@@ -1,19 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { BaseView, BaseProps, Enhancer } from 'components/View'
+import { BaseView, Enhancer } from 'components/View'
 import ControlTransformer from './Advanced/ControlTransformer'
 
-export interface SwitchInterface extends BaseProps {
-  value?: boolean
-  onChange?: any
-  switchWidth?: string
-  switchHeight?: string
-  iconSize?: number
-  primaryColor?: string
-  secondaryColor?: string
-}
-export default class SwitchView extends React.Component<SwitchInterface> {
-  shit: SwitchInterface
+export default class SwitchView extends React.Component<UI.SwitchInterface> {
   render() {
     return (
       <Enhancer>

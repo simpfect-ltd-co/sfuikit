@@ -2,36 +2,10 @@ import styled from 'styled-components'
 import * as React from 'react'
 const omit = require('lodash/omit')
 import { animatePointer } from '../libs'
-export interface BaseProps {
-  display?: string
-  float?: string
-  variant?: string
-  'flex-direction'?: string
-  'justify-content'?: string
-  background?: string
-  width?: string
-  height?: string
-  margin?: string
-  padding?: string
-  'box-shadow'?: string
-  border?: string
-  // style?: any
-  transition?: string
-  position?: string
-  visibility?: string
-  color?: string
-  opacity?: any
-  ref?: any
-  shouldAnimate?: boolean
-  onClick?: (e: any) => void
-  ['default-style']?: (theme: any) => string
-  ['custom-style']?: (theme: any) => string
-  cursor?: string
-  overflow?: string
-}
+
 const DELAY_DURATION_FOR_ANIMATION = 500
 
-export default class UIView extends React.Component<BaseProps> {
+export default class UIView extends React.Component<UI.BaseProps> {
   render() {
     return (
       <Enhancer>
