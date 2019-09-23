@@ -5,7 +5,7 @@ import { colors } from '../components/Theme'
 export default class Main extends React.Component {
   render() {
     return (
-      <UI.Theme values={{ darkmode: true, ...colors }}>
+      <UI.Theme values={{ colors }}>
         <UI.ThemeValueProvider>
           {(colors: any) => (
             <UI.View height="100%" width="100%" dark-background-level={4}>

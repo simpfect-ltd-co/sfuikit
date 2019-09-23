@@ -1,5 +1,4 @@
 declare module 'styled-components'
-declare module 'sfuikit'
 
 declare interface Window {
   prefs: any

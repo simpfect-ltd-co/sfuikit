@@ -52,7 +52,8 @@ export default class Theme extends React.Component<UI.ThemeProps> {
 export const ThemeValueProvider = (props: any) => {
   return props.children(colors)
 }
-const colorTealBlue = {
+
+export const colors = {
   primary: '#009688',
   dark_primary: '#00796B',
   light_primary: '#B2DFDB',
@@ -65,11 +66,7 @@ const colorTealBlue = {
   primary_text: '#212121',
   secondary_text: '#757575',
   divider: '#BDBDBD',
-  yellow: '#ffeb3b'
-}
-
-export const colors = {
-  ...colorTealBlue,
+  yellow: '#ffeb3b',
   teal: '#009688',
   purple: '#7E57C2',
   red: '#F44336',
