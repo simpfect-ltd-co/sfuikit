@@ -3,11 +3,11 @@ import { ThemeProvider } from 'styled-components'
 export const ThemeDataContext = React.createContext({})
 window.prefs = {}
 
-window.setViewState = (key: string, value: any) => {
+export const setViewState = (key: string, value: any) => {
   window.prefs[key] = value
 }
 
-window.getViewState = (key: string) => {
+export const getViewState = (key: string) => {
   return window.prefs[key]
 }
 

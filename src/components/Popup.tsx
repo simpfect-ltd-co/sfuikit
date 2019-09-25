@@ -32,10 +32,10 @@ export default class Popup extends React.Component<UI.PopupProps> {
       popupViewDOM.style.left = triggerBoundingBox.left.toString()
       popupViewDOM.style.width = triggerBoundingBox.width.toString()
     }
-    if (this.props.animation) {
+    if (this.props.animationTime) {
       setTimeout(() => {
         update()
-      }, this.props.animation)
+      }, this.props.animationTime)
     } else {
       update()
     }

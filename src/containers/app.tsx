@@ -24,11 +24,16 @@ export default class Main extends React.Component {
                 <UI.Input
                   placeholder="hello"
                   label="fuck you "
+                  bind="holy"
                   variant="multiline"
                 ></UI.Input>
                 <UI.Icon name="edit"></UI.Icon>
-                <UI.Button type="text">Hello</UI.Button>
-                <UI.Button type="outline">Outlien</UI.Button>
+                <UI.Button type="text" onClick={() => {}}>
+                  Hello
+                </UI.Button>
+                <UI.Button type="outline" onClick={() => {}}>
+                  Outline
+                </UI.Button>
                 <UI.Select
                   label="hehe"
                   options={[

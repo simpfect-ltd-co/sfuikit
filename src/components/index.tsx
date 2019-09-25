@@ -1,5 +1,5 @@
 import Button from './Button'
-import Theme, { ThemeValueProvider } from './Theme'
+import Theme, { ThemeValueProvider, getViewState, setViewState } from './Theme'
 import Input from './Input'
 import View from './View'
 import Icon from './Icon'
@@ -64,5 +64,6 @@ for (let i = 0; i < keys.length; i++) {
   const keyString = keys[i].toString()
   UI[keyString] = transformControl(list[keyString])
 }
-
+UI.getViewState = getViewState
+UI.setViewState = setViewState
 export = UI
