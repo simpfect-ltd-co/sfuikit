@@ -19,7 +19,15 @@ export default class Main extends React.Component {
                 box-shadow={colors.shadow_level_1}
               ></UI.View>
               <UI.View>
-                <UI.Text>Hello world</UI.Text>
+                <UI.Text
+                  bind="holy"
+                  bindValueKey="children"
+                  handleData={(value: any) => {
+                    return value[0].label
+                  }}
+                >
+                  Hello world
+                </UI.Text>
                 <UI.Input label="test"></UI.Input>
                 <UI.Input
                   placeholder="hello"
@@ -70,7 +78,11 @@ export default class Main extends React.Component {
                       value: 'hahah'
                     }
                   ]}
-                  bind="shit22"
+                  handleData={(values: any) => {
+                    console.log('jskldf', values[0])
+                    return values
+                  }}
+                  bind="holy"
                 ></UI.GridMultipleSelect>
 
                 <UI.Toggle isOpen={true}>

@@ -6,6 +6,8 @@ interface ControlProps {
   data: any
   defaultValue?: any
   bindValueKey?: string // instead of value as usual, sometimes, controls have another key value like "isOpen"
+  handleData?: Function
+  sync?: boolean
 }
 
 class ControlTransformer extends React.Component<ControlProps> {
@@ -13,7 +15,9 @@ class ControlTransformer extends React.Component<ControlProps> {
     super(props)
     if (this.props.bind) {
       if (window.prefs.hasOwnProperty([this.props.bind])) {
-        throw new Error('key duplicated::' + this.props.bind)
+        if (!this.props.sync) {
+          throw new Error('key duplicated::' + this.props.bind)
+        }
       } else {
         window.prefs[this.props.bind] = ''
       }
@@ -46,7 +50,12 @@ class ControlTransformer extends React.Component<ControlProps> {
     const bindValueKey = this.props.bindValueKey || 'value'
     let ctx = this.props.data.ctx
     return React.cloneElement(this.props.children, {
-      [bindValueKey]: ctx.state && ctx.state[bind] ? ctx.state[bind] : '',
+      [bindValueKey]:
+        ctx.state && ctx.state[bind]
+          ? this.props.handleData
+            ? this.props.handleData(ctx.state[bind])
+            : ctx.state[bind]
+          : '',
       onChange: (value: any) => {
         ctx.setState({ [bind]: value }, () => {
           window.prefs[bind] = value

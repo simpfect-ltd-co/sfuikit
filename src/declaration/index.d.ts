@@ -30,6 +30,12 @@ declare namespace UI {
     id?: string
     className?: string
 
+    bind?: string
+    bindValueKey?: string
+    defaultValue?: string
+    handleData?: Function
+    sync?: boolean
+
     'align-items'?: string
     'flex-direction'?: string
     'justify-content'?: string
@@ -209,6 +215,16 @@ declare namespace UI {
    * custom-style?: (theme: any) => string
    *
    * dark-style?: (theme: any) => string
+   *
+   * bind?: string
+   *
+   * bindValueKey?: string
+   *
+   * defaultValue?: string
+   *
+   * handleData?: (value: any) => handledData
+   *
+   * sync?: boolean
    *
    */
   const View: React.ElementType<BaseProps>
