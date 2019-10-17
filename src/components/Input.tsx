@@ -103,7 +103,8 @@ export default class UIInput extends React.Component<UI.InputProps> {
             width: 100%;
             font-size: 14px;
             background: transparent;  
-                           
+            -webkit-border-radius: 0px;
+            -webkit-appearance: none;  
             &:focus {
               outline: none;
               border-bottom: 2px solid ${theme.accent} !important;

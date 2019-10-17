@@ -20,7 +20,6 @@ export default class Main extends React.Component {
               ></UI.View>
               <UI.View>
                 <UI.Text
-                  bind="holy"
                   bindValueKey="children"
                   handleData={(value: any) => {
                     return value[0].label
@@ -82,7 +81,6 @@ export default class Main extends React.Component {
                     console.log('jskldf', values[0])
                     return values
                   }}
-                  bind="holy"
                 ></UI.GridMultipleSelect>
 
                 <UI.Toggle isOpen={true}>
