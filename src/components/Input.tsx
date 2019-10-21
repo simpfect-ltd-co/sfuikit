@@ -138,17 +138,29 @@ export default class UIInput extends React.Component<UI.InputProps> {
             )}
             <input
               autoComplete={this.props.autoComplete}
-              type={this.props.type}
+              type={this.props.type === 'number' ? 'text' : this.props.type}
               placeholder={this.props.placeholder}
-              value={this.props.value}
+              value={
+                this.props.value && this.props.type === 'number'
+                  ? this.props.value.replace(/\s/g, '')
+                  : this.props.value
+              }
               onChange={(e: any) => {
                 e.stopPropagation()
-                this.props.onChange &&
-                  this.props.onChange(
-                    this.props.type === 'number'
-                      ? e.target.value.replace(/\s/g, '')
-                      : e.target.value
-                  )
+                if (this.props.onChange) {
+                  if (this.props.type === 'number') {
+                    const numOnlyVal = e.target.value
+                      .replace(/\s/g, '')
+                      .match(/\d+/g)
+                    if (numOnlyVal) {
+                      this.props.onChange(numOnlyVal[0])
+                    } else {
+                      this.props.onChange('')
+                    }
+                  } else {
+                    this.props.onChange(e.target.value)
+                  }
+                }
               }}
               onMouseDown={(e: any) => {
                 e.stopPropagation()

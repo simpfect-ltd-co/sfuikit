@@ -27,7 +27,7 @@ export default class Main extends React.Component {
                 >
                   Hello world
                 </UI.Text>
-                <UI.Input label="test" type="number"></UI.Input>
+                <UI.Input label="test" type="number" bind="shittt"></UI.Input>
                 <UI.Input
                   placeholder="hello"
                   label="fuck you "
