@@ -143,7 +143,12 @@ export default class UIInput extends React.Component<UI.InputProps> {
               value={this.props.value}
               onChange={(e: any) => {
                 e.stopPropagation()
-                this.props.onChange && this.props.onChange(e.target.value)
+                this.props.onChange &&
+                  this.props.onChange(
+                    this.props.type === 'number'
+                      ? e.target.value.replace(/\s/g, '')
+                      : e.target.value
+                  )
               }}
               onMouseDown={(e: any) => {
                 e.stopPropagation()
