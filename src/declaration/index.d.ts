@@ -563,6 +563,7 @@ declare namespace UI {
     customMonthLabel?: (month: string) => string
     customDayOfWeek?: string[]
     customTextDate?: (date: string) => string
+    portalAddress?: string
   }
   /**
    * ### UI | DatePicker Props

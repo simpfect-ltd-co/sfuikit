@@ -49,6 +49,7 @@ export default class DatePicker extends React.Component<UI.DatePickerProps> {
           onClick={() => {
             this.setState({ isOpen: false })
           }}
+          portalAddress={this.props.portalAddress}
         >
           <UIView
             border-radius="3px 3px 0px 0px"
