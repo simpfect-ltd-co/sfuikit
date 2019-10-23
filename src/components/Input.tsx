@@ -149,13 +149,15 @@ export default class UIInput extends React.Component<UI.InputProps> {
                 e.stopPropagation()
                 if (this.props.onChange) {
                   if (this.props.type === 'number') {
-                    const numOnlyVal = e.target.value
-                      .replace(/\s/g, '')
-                      .match(/\d+/g)
-                    if (numOnlyVal) {
-                      this.props.onChange(numOnlyVal[0])
+                    const value = e.target.value.replace(/\s/g, '')
+                    if (!isNaN(parseInt(value))) {
+                      this.props.onChange(parseInt(value).toString())
                     } else {
-                      this.props.onChange('')
+                      if (e.target.value === '-') {
+                        this.props.onChange('-')
+                      } else {
+                        this.props.onChange('')
+                      }
                     }
                   } else {
                     this.props.onChange(e.target.value)
