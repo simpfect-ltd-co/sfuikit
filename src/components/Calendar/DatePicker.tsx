@@ -38,9 +38,9 @@ export default class DatePicker extends React.Component<UI.DatePickerProps> {
         >
           {this.props.customTextDate
             ? this.props.customTextDate(
-                this.props.value || this.state.selectedDate
+                this.props.value || moment().format('YYYY-MM-DD')
               )
-            : moment(this.props.value || this.state.selectedDate).format(
+            : moment(this.props.value || moment().format('YYYY-MM-DD')).format(
                 'DD/MM/YYYY'
               )}
         </UIText>
@@ -80,6 +80,7 @@ export default class DatePicker extends React.Component<UI.DatePickerProps> {
                 width="70px"
                 text-align="center"
                 font-weight="500"
+                cursor="pointer"
                 onClick={() => {
                   this.props.onChange &&
                     this.props.onChange(this.state.selectedDate)

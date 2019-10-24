@@ -101,7 +101,7 @@ export default class extends React.Component<Props> {
                       selectedMonth: 1,
                       selectedYear: nextYear
                     })
-                    this.props.onMonthChange && this.props.onMonthChange('1')
+                    this.props.onMonthChange && this.props.onMonthChange('01')
                     this.props.onYearChange && this.props.onYearChange(nextYear)
                   } else {
                     const nextMonth = formatDate(
@@ -135,43 +135,46 @@ export default class extends React.Component<Props> {
                   </UIText>
                 )}
               </UIGrid>
-              <UIGrid
-                data-component="date-content"
-                column={7}
-                padding="0 10"
-                width="300px"
-                items={this.generateDates()}
-              >
-                {item => (
-                  <UIText
-                    cursor="pointer"
-                    text-align="center"
-                    padding="12"
-                    data-selected={
-                      this.props.selectedYear ===
-                        this.props.finalDate.split('-')[0] &&
-                      this.props.selectedMonth ===
-                        this.props.finalDate.split('-')[1] &&
-                      this.props.selectedDate === formatDate(item.toString())
-                    }
-                    custom-style={theme => `
+              <UIView min-height="250px" width="300px" justify-content="center">
+                <UIGrid
+                  data-component="date-content"
+                  column={7}
+                  padding="0 10"
+                  width="300px"
+                  items={this.generateDates()}
+                >
+                  {item => (
+                    <UIText
+                      cursor="pointer"
+                      text-align="center"
+                      padding="12"
+                      data-selected={
+                        this.props.selectedYear ===
+                          this.props.finalDate.split('-')[0] &&
+                        this.props.selectedMonth ===
+                          this.props.finalDate.split('-')[1] &&
+                        this.props.selectedDate === formatDate(item.toString())
+                      }
+                      custom-style={theme => `
                         &[data-selected='true'] {
                             background: ${theme.accent};
                             border-radius: 50%;
                             color: white;
+                            box-shadow: ${theme.shadow_level_2};
                         }
                     `}
-                    onClick={() => {
-                      this.props.onDateChange &&
-                        this.props.onDateChange(formatDate(item.toString()))
-                    }}
-                  >
-                    {isValid(selectedYear, selectedMonth, item.toString())
-                      ? item
-                      : ''}
-                  </UIText>
-                )}
-              </UIGrid>
+                      onClick={() => {
+                        this.props.onDateChange &&
+                          this.props.onDateChange(formatDate(item.toString()))
+                      }}
+                    >
+                      {isValid(selectedYear, selectedMonth, item.toString())
+                        ? item
+                        : ''}
+                    </UIText>
+                  )}
+                </UIGrid>
+              </UIView>
             </UIView>
           </UIView>
         )}

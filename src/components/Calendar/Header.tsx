@@ -35,6 +35,11 @@ export default class extends React.Component<Props> {
               }}
               border="none"
               margin="18px 0 0px"
+              selectedItemView={(item: any) => (
+                <UIText color="white" font-size="15" cursor="pointer">
+                  {item.label}
+                </UIText>
+              )}
               customViewItem={item => (
                 <UIText padding="5" font-size="15" cursor="pointer">
                   {item.label}
