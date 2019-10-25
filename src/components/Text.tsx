@@ -18,6 +18,7 @@ export default class UIText extends React.Component<UI.TextProps> {
 }
 
 const Wrapper = styled(BaseView)`
+  white-space: pre-wrap;
   ${(p: any) => {
     switch (p.variant) {
       case 'primary':

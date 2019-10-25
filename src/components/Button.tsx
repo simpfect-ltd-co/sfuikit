@@ -115,6 +115,7 @@ const Wrapper = styled(BaseView)`
   ${(p: any) =>
     p.theme.darkmode &&
     p.type === 'text' &&
+    !p.variant &&
     `color: ${
       p['bright-color-level']
         ? p.theme.bright_color[p['bright-color-level']]
