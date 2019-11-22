@@ -1,5 +1,6 @@
 import Button from './Button'
-import Theme, { ThemeValueProvider, getViewState, setViewState } from './Theme'
+import Theme, { getViewState, setViewState } from './Theme'
+import ThemeValueProvider from './ThemeValueProvider'
 import Input from './Input'
 import View from './View'
 import Icon from './Icon'

@@ -2,7 +2,7 @@ import * as React from 'react'
 import UIView from '../View'
 import UIText from '../Text'
 import UISelect from '../Select/Select'
-import { ThemeValueProvider } from 'components/Theme'
+import ThemeValueProvider from 'components/ThemeValueProvider'
 interface Props {
   selectedDate: string
   selectedYear: string

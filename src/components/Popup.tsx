@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import UIView from './View'
-import { ThemeValueProvider } from './Theme'
+import ThemeValueProvider from './ThemeValueProvider'
 
 export default class Popup extends React.Component<UI.PopupProps> {
   triggerRef: any

@@ -10,10 +10,14 @@ export default class Main extends React.Component {
           <UI.DatePicker bind="jskdlfjsd"></UI.DatePicker>
           <UI.Input variant="multiline" bind="ok" sync></UI.Input>
           <UI.Text bind="ok" sync bindValueKey="children"></UI.Text>
-          <UI.Button type="text" variant="accent">
-            {' '}
-            Hello
-          </UI.Button>
+          <UI.ThemeValueProvider>
+            {(theme: any) => (
+              <UI.Button type="text" background={theme.red + ' !important'}>
+                {' '}
+                Hello
+              </UI.Button>
+            )}
+          </UI.ThemeValueProvider>
         </UI.View>
       </UI.Theme>
     )

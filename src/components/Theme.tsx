@@ -49,9 +49,6 @@ export default class Theme extends React.Component<UI.ThemeProps> {
     )
   }
 }
-export const ThemeValueProvider = (props: any) => {
-  return props.children(colors)
-}
 
 export const colors = {
   primary: '#009688',

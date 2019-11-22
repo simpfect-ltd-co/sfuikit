@@ -2,7 +2,7 @@ import * as React from 'react'
 import UIView from '../View'
 import UIGrid from '../Grid'
 import UIText from '../Text'
-import { ThemeValueProvider } from 'components/Theme'
+import ThemeValueProvider from 'components/ThemeValueProvider'
 import UIIcon from 'components/Icon'
 import { generateData, formatDate, isValid } from './libs'
 interface Props {
