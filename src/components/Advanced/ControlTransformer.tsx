@@ -16,7 +16,8 @@ class ControlTransformer extends React.Component<ControlProps> {
     if (this.props.bind) {
       if (window.prefs.hasOwnProperty([this.props.bind])) {
         if (!this.props.sync) {
-          throw new Error('key duplicated::' + this.props.bind)
+          // throw new Error('key duplicated::' + this.props.bind)
+          console.error('key duplicated::' + this.props.bind)
         }
       } else {
         window.prefs[this.props.bind] = ''
@@ -37,9 +38,9 @@ class ControlTransformer extends React.Component<ControlProps> {
   }
 
   componentWillUnmount() {
-    if (this.props.bind) {
-      const res = delete window.prefs[this.props.bind]
-    }
+    // if (this.props.bind) {
+    //   const res = delete window.prefs[this.props.bind]
+    // }
   }
   render() {
     const bind = this.props.bind
