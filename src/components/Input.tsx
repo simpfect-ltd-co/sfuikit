@@ -1,7 +1,15 @@
 import * as React from 'react'
 import { Enhancer, BaseView } from 'components/View'
 import styled from 'styled-components'
-
+const getOnlyNumber = (str: string) => {
+  const temp = str.match(/\d+/g)
+  const addedString = str.charAt(0) === '-' ? '-' : ''
+  if (temp) {
+    return addedString + temp.toString().replace(/,/g, '')
+  } else {
+    return ''
+  }
+}
 export default class UIInput extends React.Component<UI.InputProps> {
   state = {
     isActive: false
@@ -149,9 +157,17 @@ export default class UIInput extends React.Component<UI.InputProps> {
                 e.stopPropagation()
                 if (this.props.onChange) {
                   if (this.props.type === 'number') {
-                    const value = e.target.value.replace(/\s/g, '')
-                    if (!isNaN(parseInt(value))) {
-                      this.props.onChange(parseInt(value).toString())
+                    const value = getOnlyNumber(e.target.value)
+                    if (
+                      (value || (value && value.charAt(0) === '0')) &&
+                      !isNaN(parseInt(value))
+                    ) {
+                      const addedString =
+                        value.charAt(0) === '0' && value.length > 1 ? '0' : ''
+                      // if the value string is a number
+                      this.props.onChange(
+                        addedString + parseInt(value).toString()
+                      )
                     } else {
                       if (e.target.value === '-') {
                         this.props.onChange('-')
