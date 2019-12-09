@@ -2,38 +2,30 @@ import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 export const ThemeDataContext = React.createContext({})
 window.prefs = {}
-
 export const setViewState = (key: string, value: any) => {
-  window.prefs[key] = value
+  if (window.prefs[key]) {
+    window.prefs[key].value = value
+    window.prefs[key].instances.forEach((ins: any) => {
+      ins.forceUpdate()
+    })
+  } else {
+    window.prefs[key] = {
+      value,
+      instances: []
+    }
+  }
 }
 
 export const getViewState = (key: string) => {
-  return window.prefs[key]
-}
-
-const onDataChange = (o: any, callback: any) => {
-  return new Proxy(o, {
-    set(obj: any, prop: string, value: any) {
-      callback(prop, value)
-      obj[prop] = value
-      return true
-    }
-  })
+  return (window.prefs[key] && window.prefs[key].value) || ''
 }
 
 export default class Theme extends React.Component<UI.ThemeProps> {
   state = {
-    ctx: this,
-    ...window.prefs
+    ctx: this
   }
 
-  componentDidMount() {
-    window.prefs = onDataChange(window.prefs, (prop: any, val: any) => {
-      this.setState({
-        [prop]: val
-      })
-    })
-  }
+  componentDidMount() {}
 
   componentWillUnmount() {
     window.prefs = {}

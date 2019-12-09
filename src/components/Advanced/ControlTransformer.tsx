@@ -1,16 +1,15 @@
 import * as React from 'react'
-import { ThemeDataContext } from '../Theme'
+
 interface ControlProps {
   children: any
-  bind: string
-  data: any
+  bind?: string
   defaultValue?: any
   bindValueKey?: string // instead of value as usual, sometimes, controls have another key value like "isOpen"
   handleData?: Function
   sync?: boolean
 }
 
-class ControlTransformer extends React.Component<ControlProps> {
+export default class ControlTransformer extends React.Component<ControlProps> {
   constructor(props: ControlProps) {
     super(props)
     if (this.props.bind) {
@@ -19,21 +18,27 @@ class ControlTransformer extends React.Component<ControlProps> {
           // throw new Error('key duplicated::' + this.props.bind)
           console.error('key duplicated::' + this.props.bind)
         }
+        window.prefs[this.props.bind].instances.push(this)
       } else {
-        window.prefs[this.props.bind] = ''
+        const instance = this
+        window.prefs[this.props.bind] = {
+          value: '',
+          instances: [instance]
+        }
       }
     }
   }
   componentDidMount() {
-    if (this.props.defaultValue) {
-      this.props.data.ctx.setState(
-        {
-          [this.props.bind]: this.props.defaultValue
-        },
-        () => {
-          window.prefs[this.props.bind] = this.props.defaultValue
+    if (this.props.defaultValue && this.props.bind) {
+      const instance = this
+      if (!window.prefs[this.props.bind]) {
+        window.prefs[this.props.bind] = {
+          value: this.props.defaultValue,
+          instances: [instance]
         }
-      )
+      } else {
+        window.prefs[this.props.bind].instances.push(instance)
+      }
     }
   }
 
@@ -49,34 +54,28 @@ class ControlTransformer extends React.Component<ControlProps> {
     }
 
     const bindValueKey = this.props.bindValueKey || 'value'
-    let ctx = this.props.data.ctx
+    const receivedValue = window.prefs[bind].value
     return React.cloneElement(this.props.children, {
-      [bindValueKey]:
-        ctx.state && ctx.state[bind]
-          ? this.props.handleData
-            ? this.props.handleData(ctx.state[bind])
-            : ctx.state[bind]
-          : '',
+      [bindValueKey]: receivedValue
+        ? this.props.handleData
+          ? this.props.handleData(receivedValue)
+          : receivedValue
+        : '',
       onChange: (value: any) => {
-        ctx.setState({ [bind]: value }, () => {
-          window.prefs[bind] = value
-          if (this.props.children.props.onChange) {
-            console.warn(
-              'It is not recommended to have onChange with bind feature'
-            )
-            this.props.children.props.onChange(value)
-          }
-        })
+        if (this.props.bind && window.prefs[this.props.bind]) {
+          window.prefs[this.props.bind].value = value
+          window.prefs[this.props.bind].instances.forEach((ins: any) => {
+            ins.forceUpdate()
+          })
+        }
+
+        if (this.props.children.props.onChange) {
+          console.warn(
+            'It is not recommended to have onChange with bind feature'
+          )
+          this.props.children.props.onChange(value)
+        }
       }
     })
   }
 }
-
-export default (props: any) =>
-  props.bind ? (
-    <ThemeDataContext.Consumer>
-      {(data: any) => <ControlTransformer {...props} data={data} />}
-    </ThemeDataContext.Consumer>
-  ) : (
-    <ControlTransformer {...props} />
-  )
