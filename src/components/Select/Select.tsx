@@ -173,6 +173,7 @@ export default class Select extends React.Component<UI.SelectProps> {
                   
                 `}
               data-component="select-popup"
+              custom-style={this.props.popupStyle}
             >
               <UIList items={this.props.options}>
                 {item =>
