@@ -1,6 +1,4 @@
 import * as React from 'react'
-const isEqual = require('lodash/isEqual')
-const difference = require('lodash/difference')
 
 interface ControlProps {
   children: any
@@ -48,6 +46,7 @@ export default class ControlTransformer extends React.Component<ControlProps> {
     if (this.props.bind) {
       let index = window.prefs[this.props.bind].instances.indexOf(this)
       window.prefs[this.props.bind].instances.splice(index, 1)
+      //delete instance unmount
     }
   }
   render() {
