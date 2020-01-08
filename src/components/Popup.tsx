@@ -20,7 +20,7 @@ export default class Popup extends React.Component<UI.PopupProps> {
       const popupViewDOM = ReactDOM.findDOMNode(this.popupView) as HTMLElement
       const popupBoundingBox = popupViewDOM.getBoundingClientRect()
       popupViewDOM.style.top =
-        this.props.direction === 'up'
+        (this.props.direction === 'up'
           ? (
               triggerBoundingBox.top -
               parseInt(popupBoundingBox.height.toString())
@@ -28,9 +28,9 @@ export default class Popup extends React.Component<UI.PopupProps> {
           : (
               triggerBoundingBox.top +
               parseInt(triggerBoundingBox.height.toString())
-            ).toString()
-      popupViewDOM.style.left = triggerBoundingBox.left.toString()
-      popupViewDOM.style.width = triggerBoundingBox.width.toString()
+            ).toString()) + 'px'
+      popupViewDOM.style.left = triggerBoundingBox.left.toString() + 'px'
+      popupViewDOM.style.width = triggerBoundingBox.width.toString() + 'px'
     }
     if (this.props.animationTime) {
       setTimeout(() => {
